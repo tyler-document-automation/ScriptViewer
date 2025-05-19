@@ -15,12 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_756D43ABECFF48D99BEE068107117323"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_F5E7D4ACA84D47EB830EA89CE1685EB9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -50,6 +44,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -74,6 +76,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -106,26 +116,6 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_756D43ABECFF48D99BEE068107117323"
-            {
-            "SourcePath" = "8:..\\ScriptViewer\\ScriptView.ico"
-            "TargetName" = "8:ScriptView.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_C765A0CD56A44B28B5C07BD755E10BE0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
         }
         "FileType"
         {
@@ -200,7 +190,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_756D43ABECFF48D99BEE068107117323"
+        "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -303,20 +293,6 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_C45DD607249E403B8CE5B370384ED218"
-            {
-            "Name" = "8:ScriptViewer"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_F5E7D4ACA84D47EB830EA89CE1685EB9"
-            "Folder" = "8:_0E11AC727BD44F5E986D234AFB2892B0"
-            "WorkingFolder" = "8:_C765A0CD56A44B28B5C07BD755E10BE0"
-            "Icon" = "8:_756D43ABECFF48D99BEE068107117323"
-            "Feature" = "8:"
-            }
         }
         "UserInterface"
         {
@@ -718,7 +694,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F5E7D4ACA84D47EB830EA89CE1685EB9"
             {
-            "SourcePath" = "8:..\\ScriptViewer\\obj\\Debug\\net8.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\obj\\Release\\net8.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C765A0CD56A44B28B5C07BD755E10BE0"

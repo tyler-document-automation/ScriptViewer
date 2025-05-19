@@ -17,7 +17,6 @@
     <Content Include="bin\Release\net8.0-windows\publish\ScriptViewer.runtimeconfig.json" />
     <Content Include="bin\Release\net8.0-windows\ScriptViewer.deps.json" />
     <Content Include="bin\Release\net8.0-windows\ScriptViewer.runtimeconfig.json" />
-    <Content Include="ScriptView.ico" />
   </ItemGroup>
 
   <ItemGroup>
