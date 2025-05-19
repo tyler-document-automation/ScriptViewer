@@ -1852,23 +1852,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\barmanvarn\\.nuget\\packages\\": {},
+    "C:\\Users\\Brian.Varnell\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\VisualStudioProjects\\ScriptViewer\\ScriptViewer.vbproj",
+      "projectUniqueName": "C:\\VisualStudioProjects\\ScriptViewer\\ScriptViewer.vbproj",
       "projectName": "ScriptViewer",
-      "projectPath": "D:\\VisualStudioProjects\\ScriptViewer\\ScriptViewer.vbproj",
-      "packagesPath": "C:\\Users\\barmanvarn\\.nuget\\packages\\",
-      "outputPath": "D:\\VisualStudioProjects\\ScriptViewer\\obj\\",
+      "projectPath": "C:\\VisualStudioProjects\\ScriptViewer\\ScriptViewer.vbproj",
+      "packagesPath": "C:\\Users\\Brian.Varnell\\.nuget\\packages\\",
+      "outputPath": "C:\\VisualStudioProjects\\ScriptViewer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\barmanvarn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Brian.Varnell\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

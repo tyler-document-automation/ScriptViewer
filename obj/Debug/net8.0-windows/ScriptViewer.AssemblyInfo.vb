@@ -16,7 +16,7 @@ Imports System.Reflection
 <Assembly: System.Reflection.AssemblyCompanyAttribute("ScriptViewer"),  _
  Assembly: System.Reflection.AssemblyConfigurationAttribute("Debug"),  _
  Assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0"),  _
- Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0"),  _
+ Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+acdb5133460deaedb2d1908d0b1682a84b660f97"),  _
  Assembly: System.Reflection.AssemblyProductAttribute("ScriptViewer"),  _
  Assembly: System.Reflection.AssemblyTitleAttribute("ScriptViewer"),  _
  Assembly: System.Reflection.AssemblyVersionAttribute("1.0.5.0"),  _
