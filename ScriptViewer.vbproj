@@ -1,0 +1,174 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <StartupObject>Sub Main</StartupObject>
+    <UseWindowsForms>true</UseWindowsForms>
+    <MyType>WindowsForms</MyType>
+    <ImportedNamespaces>System.Configuration=False,System.Data=False,System.Drawing=False,System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,ScriptViewer=True</ImportedNamespaces>
+    <ApplicationIcon>ScriptView.ico</ApplicationIcon>
+    <AssemblyVersion>1.0.5.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Release\net8.0-windows\publish\ScriptViewer.deps.json" />
+    <Content Include="bin\Release\net8.0-windows\publish\ScriptViewer.runtimeconfig.json" />
+    <Content Include="bin\Release\net8.0-windows\ScriptViewer.deps.json" />
+    <Content Include="bin\Release\net8.0-windows\ScriptViewer.runtimeconfig.json" />
+    <Content Include="ScriptView.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Import Include="System.Configuration" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Release\net8.0-windows\Azure.Core.dll" />
+    <None Include="bin\Release\net8.0-windows\Azure.Identity.dll" />
+    <None Include="bin\Release\net8.0-windows\cs\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\de\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\es\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\FastColoredTextBox.dll" />
+    <None Include="bin\Release\net8.0-windows\fr\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\GetScripts.sql" />
+    <None Include="bin\Release\net8.0-windows\it\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\ja\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\ko\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\Microsoft.Bcl.AsyncInterfaces.dll" />
+    <None Include="bin\Release\net8.0-windows\Microsoft.Bcl.Cryptography.dll" />
+    <None Include="bin\Release\net8.0-windows\Microsoft.Data.SqlClient.dll" />
+    <None Include="bin\Release\net8.0-windows\Microsoft.Extensions.Caching.Abstractions.dll" />
+    <None Include="bin\Release\net8.0-windows\Microsoft.Extensions.Caching.Memory.dll" />
+    <None Include="bin\Release\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+    <None Include="bin\Release\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll" />
+    <None Include="bin\Release\net8.0-windows\Microsoft.Extensions.Options.dll" />
+    <None Include="bin\Release\net8.0-windows\Microsoft.Extensions.Primitives.dll" />
+    <None Include="bin\Release\net8.0-windows\Microsoft.Identity.Client.dll" />
+    <None Include="bin\Release\net8.0-windows\Microsoft.Identity.Client.Extensions.Msal.dll" />
+    <None Include="bin\Release\net8.0-windows\Microsoft.IdentityModel.Abstractions.dll" />
+    <None Include="bin\Release\net8.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll" />
+    <None Include="bin\Release\net8.0-windows\Microsoft.IdentityModel.Logging.dll" />
+    <None Include="bin\Release\net8.0-windows\Microsoft.IdentityModel.Protocols.dll" />
+    <None Include="bin\Release\net8.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" />
+    <None Include="bin\Release\net8.0-windows\Microsoft.IdentityModel.Tokens.dll" />
+    <None Include="bin\Release\net8.0-windows\Microsoft.SqlServer.Server.dll" />
+    <None Include="bin\Release\net8.0-windows\pl\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\pt-BR\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\publish.zip" />
+    <None Include="bin\Release\net8.0-windows\publish\Azure.Core.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\Azure.Identity.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\cs\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\de\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\es\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\FastColoredTextBox.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\fr\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\GetScripts.sql" />
+    <None Include="bin\Release\net8.0-windows\publish\it\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\ja\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\ko\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\Microsoft.Bcl.AsyncInterfaces.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\Microsoft.Bcl.Cryptography.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\Microsoft.Data.SqlClient.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\Microsoft.Extensions.Caching.Abstractions.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\Microsoft.Extensions.Caching.Memory.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\Microsoft.Extensions.Logging.Abstractions.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\Microsoft.Extensions.Options.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\Microsoft.Extensions.Primitives.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\Microsoft.Identity.Client.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\Microsoft.Identity.Client.Extensions.Msal.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\Microsoft.IdentityModel.Abstractions.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\Microsoft.IdentityModel.JsonWebTokens.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\Microsoft.IdentityModel.Logging.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\Microsoft.IdentityModel.Protocols.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\Microsoft.IdentityModel.Tokens.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\Microsoft.SqlServer.Server.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\pl\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\pt-BR\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\runtimes\win-arm64\native\sni.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\runtimes\win-x64\native\sni.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\runtimes\win-x86\native\sni.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\runtimes\win\lib\net8.0\System.Data.SqlClient.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\ru\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\ScriptViewer.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\ScriptViewer.dll.config" />
+    <None Include="bin\Release\net8.0-windows\publish\ScriptViewer.exe" />
+    <None Include="bin\Release\net8.0-windows\publish\ScriptViewer.pdb" />
+    <None Include="bin\Release\net8.0-windows\publish\System.ClientModel.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\System.Configuration.ConfigurationManager.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\System.Data.SqlClient.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\System.Diagnostics.EventLog.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\System.IdentityModel.Tokens.Jwt.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\System.Memory.Data.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\System.Security.Cryptography.Pkcs.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\tr\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\zh-Hans\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\publish\zh-Hant\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll" />
+    <None Include="bin\Release\net8.0-windows\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll" />
+    <None Include="bin\Release\net8.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll" />
+    <None Include="bin\Release\net8.0-windows\runtimes\win-arm64\native\sni.dll" />
+    <None Include="bin\Release\net8.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll" />
+    <None Include="bin\Release\net8.0-windows\runtimes\win-x64\native\sni.dll" />
+    <None Include="bin\Release\net8.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll" />
+    <None Include="bin\Release\net8.0-windows\runtimes\win-x86\native\sni.dll" />
+    <None Include="bin\Release\net8.0-windows\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll" />
+    <None Include="bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Data.SqlClient.dll" />
+    <None Include="bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll" />
+    <None Include="bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll" />
+    <None Include="bin\Release\net8.0-windows\ru\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\ScriptViewer.dll" />
+    <None Include="bin\Release\net8.0-windows\ScriptViewer.dll.config" />
+    <None Include="bin\Release\net8.0-windows\ScriptViewer.exe" />
+    <None Include="bin\Release\net8.0-windows\ScriptViewer.pdb" />
+    <None Include="bin\Release\net8.0-windows\System.ClientModel.dll" />
+    <None Include="bin\Release\net8.0-windows\System.Configuration.ConfigurationManager.dll" />
+    <None Include="bin\Release\net8.0-windows\System.Data.SqlClient.dll" />
+    <None Include="bin\Release\net8.0-windows\System.Diagnostics.EventLog.dll" />
+    <None Include="bin\Release\net8.0-windows\System.IdentityModel.Tokens.Jwt.dll" />
+    <None Include="bin\Release\net8.0-windows\System.Memory.Data.dll" />
+    <None Include="bin\Release\net8.0-windows\System.Security.Cryptography.Pkcs.dll" />
+    <None Include="bin\Release\net8.0-windows\tr\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\zh-Hans\Microsoft.Data.SqlClient.resources.dll" />
+    <None Include="bin\Release\net8.0-windows\zh-Hant\Microsoft.Data.SqlClient.resources.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FastColoredTextBox.Net5" Version="2.16.26" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="My Project\Application.Designer.vb">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="GetScripts.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>
