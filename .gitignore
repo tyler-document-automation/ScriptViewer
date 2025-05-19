@@ -1,0 +1,4 @@
+# ignore these directories
+
+/.vs
+/obj/Release
