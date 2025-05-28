@@ -52,6 +52,45 @@ Public Class frmMain
 
     Private Sub LoadClientList()
 
+        Dim dt As New DataTable()
+
+        Using _connScriptViewer = New SqlConnection(connectionString)
+            Try
+
+                Using cmd As New SqlCommand("GetScripts", _connScriptViewer)
+                    cmd.CommandType = CommandType.StoredProcedure
+
+                    cmd.Parameters.AddWithValue("@querytype", 0)
+
+                    _connScriptViewer.Open()
+                    'Dim reader As SqlDataReader = cmd.ExecuteReader()
+
+                    cmbClients.Items.Clear()
+
+                    cmbClients.Items.Add("--Select client...--")
+
+                    Using da As New SqlDataAdapter(cmd)
+                        da.Fill(dt)
+                    End Using
+
+                    cmbClients.DataSource = dt
+                    cmbClients.DisplayMember = "ClientName"
+                    cmbClients.ValueMember = "DBName"
+
+                    cmbClients.SelectedIndex = 0
+
+                End Using
+
+
+            Catch ex As Exception
+                MessageBox.Show("Error loading client list. " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Using
+
+    End Sub
+
+    Private Sub LoadClientListOld()
+
         'Dim connectionString As String = ConfigurationManager.ConnectionStrings("ScriptViewer").ConnectionString
 
         Using _connScriptViewer = New SqlConnection(connectionString)
@@ -108,8 +147,11 @@ Public Class frmMain
 
     End Sub
 
+
+
     Private Sub GetScriptVersion()
-        Dim databasename = cmbClients.SelectedItem & "_intellidact"
+        'Dim databasename = cmbClients.SelectedItem & "_intellidact"
+        Dim databasename = cmbClients.SelectedValue
         'Dim connectionString As String = ConfigurationManager.ConnectionStrings("ScriptViewer").ConnectionString
 
         Using _connScriptViewer = New SqlConnection(connectionString)
@@ -149,7 +191,8 @@ Public Class frmMain
         lblLibraryType.Text = "Event Libraries:"
         lblEventFunction.Visible = False
 
-        Dim databasename = cmbClients.SelectedItem & "_intellidact"
+        'Dim databasename = cmbClients.SelectedItem & "_intellidact"
+        Dim databasename = cmbClients.SelectedValue
 
         'Dim connectionString As String = ConfigurationManager.ConnectionStrings("ScriptViewer").ConnectionString
 
@@ -207,7 +250,8 @@ Public Class frmMain
         lblEventFunction.Visible = False
 
 
-        Dim databasename = cmbClients.SelectedItem & "_intellidact"
+        'Dim databasename = cmbClients.SelectedItem & "_intellidact"
+        Dim databasename = cmbClients.SelectedValue
 
         'Dim connectionString As String = ConfigurationManager.ConnectionStrings("ScriptViewer").ConnectionString
 
@@ -255,7 +299,8 @@ Public Class frmMain
     Private Sub dgvEventLibraries_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvEventLibraries.CellClick
         fctbScript.Visible = False
 
-        Dim databasename = cmbClients.SelectedItem & "_intellidact"
+        'Dim databasename = cmbClients.SelectedItem & "_intellidact"
+        Dim databasename = cmbClients.SelectedValue
 
         'Dim connectionString As String = ConfigurationManager.ConnectionStrings("ScriptViewer").ConnectionString
 
@@ -319,7 +364,8 @@ Public Class frmMain
         fctbScript.Language = Language.JS
 
 
-        Dim databasename = cmbClients.SelectedItem & "_intellidact"
+        'Dim databasename = cmbClients.SelectedItem & "_intellidact"
+        Dim databasename = cmbClients.SelectedValue
 
         'Dim connectionString As String = ConfigurationManager.ConnectionStrings("ScriptViewer").ConnectionString
 
