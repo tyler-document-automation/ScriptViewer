@@ -3,6 +3,8 @@ Imports System.Reflection
 Imports FastColoredTextBoxNS
 Imports Microsoft.Data.SqlClient
 Imports System.Configuration
+Imports System.Data.Common
+Imports System.Data.SqlClient
 
 
 Public Class frmMain
@@ -72,6 +74,12 @@ Public Class frmMain
                     Using da As New SqlDataAdapter(cmd)
                         da.Fill(dt)
                     End Using
+
+                    Dim newRow As DataRow = dt.NewRow()
+                    newRow("DbName") = 0
+                    newRow("ClientName") = "--Select client--"
+                    dt.Rows.InsertAt(newRow, 0)
+
 
                     cmbClients.DataSource = dt
                     cmbClients.DisplayMember = "ClientName"
