@@ -1,3 +1,3 @@
 This repo contains the project files for the ScriptViewer application.
 
-If you are wanting to install the application, you can get the MSI install file from the installer folder in this repo.
+To install the application, you can get the MSI install file from the ScriptViewerInstaller\Release folder in this repo.
