@@ -43,6 +43,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -59,6 +67,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -167,7 +191,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ScriptViewer"
         "ProductCode" = "8:{91D2DBE0-BBCE-4ED1-BB3B-A3D3007498C2}"
-        "PackageCode" = "8:{24AFA356-472E-4167-BEE7-09CBFD3D1137}"
+        "PackageCode" = "8:{9F443B65-625F-4656-8688-F16A6FB9705A}"
         "UpgradeCode" = "8:{FAF79389-C496-49A9-94D1-209BA4E6B491}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -287,7 +311,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_68067B939044456783BB4F34203A83B2"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_050863D476D4491FB53864E93BF6C8E7"
             {
             "Name" = "8:ScriptViewer"
             "Arguments" = "8:"
@@ -295,7 +319,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_9A81A72E1D4F4482896B764AB66DFC39"
+            "Target" = "8:_17F2D9C04D144E7893D6EC72DD8A553D"
             "Folder" = "8:_A44244E519C3420390E4260A4C79A34D"
             "WorkingFolder" = "8:_9A81A72E1D4F4482896B764AB66DFC39"
             "Icon" = "8:_6F8D4E284B3746089F44EFEAECA1EB4F"
