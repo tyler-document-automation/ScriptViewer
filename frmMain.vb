@@ -18,7 +18,7 @@ Public Class frmMain
             CreateConnection()
             LoadClientList()
 
-            lblVersion.Text = "Version: " & Assembly.GetExecutingAssembly().GetName().Version.ToString
+            'lblVersion.Text = "Version: " & Assembly.GetExecutingAssembly().GetName().Version.ToString
 
             'Me.WindowState = FormWindowState.Maximized
 
@@ -141,6 +141,8 @@ Public Class frmMain
         If cmbClients.SelectedIndex > 0 Then
             btnCustomLibraries.Enabled = True
             btnEventLibraries.Enabled = True
+            btnSearch.Enabled = True
+            btnUndo.Enabled = True
             GetScriptVersion()
         Else
             btnCustomLibraries.Enabled = False
@@ -148,6 +150,8 @@ Public Class frmMain
             lblLibraryType.Visible = False
             lblEventFunction.Visible = False
             lblScriptVersion.Visible = False
+            btnSearch.Enabled = False
+            btnUndo.Enabled = False
         End If
 
         lblLibraryType.Visible = False
@@ -218,6 +222,9 @@ Public Class frmMain
 
                     cmd.Parameters.AddWithValue("@database", databasename)
                     cmd.Parameters.AddWithValue("@eventorcustom", librarytype)
+                    If Not String.IsNullOrWhiteSpace(txtSearch.Text) Then
+                        cmd.Parameters.AddWithValue("@searchstring", txtSearch.Text)
+                    End If
                     cmd.Parameters.AddWithValue("@querytype", 1)
 
                     Using adapter As New SqlDataAdapter(cmd)
@@ -276,6 +283,9 @@ Public Class frmMain
 
                     cmd.Parameters.AddWithValue("@database", databasename)
                     cmd.Parameters.AddWithValue("@eventorcustom", librarytype)
+                    If Not String.IsNullOrWhiteSpace(txtSearch.Text) Then
+                        cmd.Parameters.AddWithValue("@searchstring", txtSearch.Text)
+                    End If
                     cmd.Parameters.AddWithValue("@querytype", 1)
 
                     Using adapter As New SqlDataAdapter(cmd)
@@ -319,6 +329,9 @@ Public Class frmMain
 
                     cmd.Parameters.AddWithValue("@database", databasename)
                     cmd.Parameters.AddWithValue("@eventorcustom", librarytype)
+                    If Not String.IsNullOrWhiteSpace(txtSearch.Text) Then
+                        cmd.Parameters.AddWithValue("@searchstring", txtSearch.Text)
+                    End If
                     cmd.Parameters.AddWithValue("@querytype", 2)
                     cmd.Parameters.AddWithValue("@library", dgvEventLibraries.CurrentCell.Value)
 
@@ -337,6 +350,7 @@ Public Class frmMain
                         dgvEventLibraryEvents.ShowCellToolTips = True
 
                         dgvEventLibraryEvents.Columns(1).Visible = False
+                        dgvEventLibraryEvents.Columns(2).Visible = False
 
                         ' dgvEventLibraries.Columns(0).Width = 200
                         dgvEventLibraryEvents.Visible = True
@@ -411,10 +425,6 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub btnVersionReport_Click(sender As Object, e As EventArgs) Handles btnVersionReport.Click
-        frmVersionReport.ShowDialog()
-
-    End Sub
 
     Private Sub dgvEventLibraries_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dgvEventLibraries.CellFormatting
         If e.RowIndex >= 0 AndAlso e.ColumnIndex = 0 Then
@@ -442,11 +452,11 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub LinksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LinksToolStripMenuItem.Click
+    Private Sub LinksToolStripMenuItem_Click(sender As Object, e As EventArgs)
         MsgBox("open links")
     End Sub
 
-    Private Sub ImportDataToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImportDataToolStripMenuItem.Click
+    Private Sub ImportDataToolStripMenuItem_Click(sender As Object, e As EventArgs)
         MsgBox("open import data")
     End Sub
 
@@ -457,5 +467,32 @@ Public Class frmMain
     Friend WithEvents dgvEventLibraryEvents As DataGridView
     Friend WithEvents fctbScript As FastColoredTextBoxNS.FastColoredTextBox
 
+    Private Sub tsVersionByClient_Click(sender As Object, e As EventArgs) Handles tsVersionByClient.Click
+        frmVersionReport.ShowDialog()
+    End Sub
 
+    Private Sub tsAbout_Click(sender As Object, e As EventArgs) Handles tsAbout.Click
+        MsgBox(Assembly.GetExecutingAssembly().GetName().Version.ToString, Title:="ScriptViewer Version")
+    End Sub
+
+    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        If String.IsNullOrWhiteSpace(txtSearch.Text) Then
+            MsgBox("Please enter a search value")
+        Else
+            dgvEventLibraries.Visible = False
+            dgvEventLibraryEvents.Visible = False
+            lblLibraryType.Visible = False
+            lblEventFunction.Visible = False
+            fctbScript.Visible = False
+        End If
+    End Sub
+
+    Private Sub btnUndo_Click(sender As Object, e As EventArgs) Handles btnUndo.Click
+        txtSearch.Text = ""
+        dgvEventLibraries.Visible = False
+        dgvEventLibraryEvents.Visible = False
+        lblLibraryType.Visible = False
+        lblEventFunction.Visible = False
+        fctbScript.Visible = False
+    End Sub
 End Class

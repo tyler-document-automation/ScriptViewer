@@ -47,12 +47,15 @@ Partial Class frmMain
         SqlCommand1 = New Microsoft.Data.SqlClient.SqlCommand()
         lblEventFunction = New Label()
         lblScriptVersion = New Label()
-        btnVersionReport = New System.Windows.Forms.Button()
-        lblVersion = New Label()
         MenuStrip1 = New MenuStrip()
+        ReportsToolStripMenuItem = New ToolStripMenuItem()
+        tsVersionByClient = New ToolStripMenuItem()
         tsMenu = New ToolStripMenuItem()
-        LinksToolStripMenuItem = New ToolStripMenuItem()
-        ImportDataToolStripMenuItem = New ToolStripMenuItem()
+        tsAbout = New ToolStripMenuItem()
+        lblSearch = New Label()
+        txtSearch = New System.Windows.Forms.TextBox()
+        btnSearch = New System.Windows.Forms.Button()
+        btnUndo = New System.Windows.Forms.Button()
         CType(dgvEventLibraries, ComponentModel.ISupportInitialize).BeginInit()
         CType(dgvEventLibraryEvents, ComponentModel.ISupportInitialize).BeginInit()
         CType(fctbScript, ComponentModel.ISupportInitialize).BeginInit()
@@ -79,13 +82,13 @@ Partial Class frmMain
         dgvEventLibraries.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvEventLibraries.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvEventLibraries.ColumnHeadersVisible = False
-        dgvEventLibraries.Location = New Point(12, 103)
+        dgvEventLibraries.Location = New Point(11, 158)
         dgvEventLibraries.MultiSelect = False
         dgvEventLibraries.Name = "dgvEventLibraries"
         dgvEventLibraries.ReadOnly = True
         dgvEventLibraries.RowHeadersVisible = False
         dgvEventLibraries.RowHeadersWidth = 100
-        dgvEventLibraries.Size = New Size(240, 282)
+        dgvEventLibraries.Size = New Size(240, 303)
         dgvEventLibraries.TabIndex = 1
         dgvEventLibraries.Visible = False
         ' 
@@ -94,9 +97,9 @@ Partial Class frmMain
         btnEventLibraries.Enabled = False
         btnEventLibraries.FlatStyle = FlatStyle.System
         btnEventLibraries.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnEventLibraries.Location = New Point(876, 33)
+        btnEventLibraries.Location = New Point(11, 80)
         btnEventLibraries.Name = "btnEventLibraries"
-        btnEventLibraries.Size = New Size(120, 36)
+        btnEventLibraries.Size = New Size(102, 36)
         btnEventLibraries.TabIndex = 2
         btnEventLibraries.Text = "Event Libraries"
         btnEventLibraries.UseVisualStyleBackColor = True
@@ -106,9 +109,9 @@ Partial Class frmMain
         btnCustomLibraries.Enabled = False
         btnCustomLibraries.FlatStyle = FlatStyle.System
         btnCustomLibraries.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnCustomLibraries.Location = New Point(1018, 33)
+        btnCustomLibraries.Location = New Point(119, 80)
         btnCustomLibraries.Name = "btnCustomLibraries"
-        btnCustomLibraries.Size = New Size(159, 36)
+        btnCustomLibraries.Size = New Size(133, 36)
         btnCustomLibraries.TabIndex = 3
         btnCustomLibraries.Text = "Custom Libraries"
         btnCustomLibraries.UseVisualStyleBackColor = True
@@ -121,13 +124,13 @@ Partial Class frmMain
         dgvEventLibraryEvents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvEventLibraryEvents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvEventLibraryEvents.ColumnHeadersVisible = False
-        dgvEventLibraryEvents.Location = New Point(12, 427)
+        dgvEventLibraryEvents.Location = New Point(12, 501)
         dgvEventLibraryEvents.MultiSelect = False
         dgvEventLibraryEvents.Name = "dgvEventLibraryEvents"
         dgvEventLibraryEvents.ReadOnly = True
         dgvEventLibraryEvents.RowHeadersVisible = False
         dgvEventLibraryEvents.RowHeadersWidth = 100
-        dgvEventLibraryEvents.Size = New Size(240, 347)
+        dgvEventLibraryEvents.Size = New Size(240, 358)
         dgvEventLibraryEvents.TabIndex = 4
         dgvEventLibraryEvents.Visible = False
         ' 
@@ -149,7 +152,7 @@ Partial Class frmMain
         fctbScript.Paddings = New Padding(0)
         fctbScript.SelectionColor = Color.FromArgb(CByte(60), CByte(0), CByte(0), CByte(255))
         fctbScript.ServiceColors = CType(resources.GetObject("fctbScript.ServiceColors"), ServiceColors)
-        fctbScript.Size = New Size(1326, 694)
+        fctbScript.Size = New Size(1326, 779)
         fctbScript.TabIndex = 6
         fctbScript.Visible = False
         fctbScript.Zoom = 100
@@ -168,7 +171,7 @@ Partial Class frmMain
         ' 
         lblLibraryType.AutoSize = True
         lblLibraryType.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblLibraryType.Location = New Point(12, 80)
+        lblLibraryType.Location = New Point(12, 135)
         lblLibraryType.Name = "lblLibraryType"
         lblLibraryType.Size = New Size(102, 20)
         lblLibraryType.TabIndex = 8
@@ -184,7 +187,7 @@ Partial Class frmMain
         ' 
         lblEventFunction.AutoSize = True
         lblEventFunction.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblEventFunction.Location = New Point(12, 404)
+        lblEventFunction.Location = New Point(11, 478)
         lblEventFunction.Name = "lblEventFunction"
         lblEventFunction.Size = New Size(51, 20)
         lblEventFunction.TabIndex = 9
@@ -197,66 +200,95 @@ Partial Class frmMain
         lblScriptVersion.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblScriptVersion.Location = New Point(404, 41)
         lblScriptVersion.Name = "lblScriptVersion"
-        lblScriptVersion.Size = New Size(53, 20)
+        lblScriptVersion.Size = New Size(133, 20)
         lblScriptVersion.TabIndex = 10
-        lblScriptVersion.Text = "Label1"
+        lblScriptVersion.Text = "ClientScriptVersion"
         lblScriptVersion.Visible = False
-        ' 
-        ' btnVersionReport
-        ' 
-        btnVersionReport.FlatStyle = FlatStyle.System
-        btnVersionReport.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnVersionReport.Location = New Point(1260, 33)
-        btnVersionReport.Name = "btnVersionReport"
-        btnVersionReport.Size = New Size(183, 36)
-        btnVersionReport.TabIndex = 11
-        btnVersionReport.Text = "Script Version By Client"
-        btnVersionReport.UseVisualStyleBackColor = True
-        ' 
-        ' lblVersion
-        ' 
-        lblVersion.AutoSize = True
-        lblVersion.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblVersion.Location = New Point(1522, 38)
-        lblVersion.Name = "lblVersion"
-        lblVersion.Size = New Size(53, 20)
-        lblVersion.TabIndex = 12
-        lblVersion.Text = "Label1"
         ' 
         ' MenuStrip1
         ' 
-        MenuStrip1.Items.AddRange(New ToolStripItem() {tsMenu})
+        MenuStrip1.Items.AddRange(New ToolStripItem() {ReportsToolStripMenuItem, tsMenu})
         MenuStrip1.Location = New Point(0, 0)
         MenuStrip1.Name = "MenuStrip1"
         MenuStrip1.Size = New Size(1662, 24)
         MenuStrip1.TabIndex = 13
         MenuStrip1.Text = "MenuStrip1"
         ' 
+        ' ReportsToolStripMenuItem
+        ' 
+        ReportsToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {tsVersionByClient})
+        ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
+        ReportsToolStripMenuItem.Size = New Size(59, 20)
+        ReportsToolStripMenuItem.Text = "Reports"
+        ' 
+        ' tsVersionByClient
+        ' 
+        tsVersionByClient.Name = "tsVersionByClient"
+        tsVersionByClient.Size = New Size(162, 22)
+        tsVersionByClient.Text = "Version by Client"
+        ' 
         ' tsMenu
         ' 
-        tsMenu.DropDownItems.AddRange(New ToolStripItem() {LinksToolStripMenuItem, ImportDataToolStripMenuItem})
+        tsMenu.DropDownItems.AddRange(New ToolStripItem() {tsAbout})
         tsMenu.Name = "tsMenu"
         tsMenu.Size = New Size(44, 20)
         tsMenu.Text = "Help"
         ' 
-        ' LinksToolStripMenuItem
+        ' tsAbout
         ' 
-        LinksToolStripMenuItem.Name = "LinksToolStripMenuItem"
-        LinksToolStripMenuItem.Size = New Size(180, 22)
-        LinksToolStripMenuItem.Text = "Links"
+        tsAbout.Name = "tsAbout"
+        tsAbout.Size = New Size(116, 22)
+        tsAbout.Text = "About..."
         ' 
-        ' ImportDataToolStripMenuItem
+        ' lblSearch
         ' 
-        ImportDataToolStripMenuItem.Name = "ImportDataToolStripMenuItem"
-        ImportDataToolStripMenuItem.Size = New Size(180, 22)
-        ImportDataToolStripMenuItem.Text = "Import Data..."
+        lblSearch.AutoSize = True
+        lblSearch.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblSearch.Location = New Point(758, 37)
+        lblSearch.Name = "lblSearch"
+        lblSearch.Size = New Size(56, 20)
+        lblSearch.TabIndex = 15
+        lblSearch.Text = "Search:"
+        ' 
+        ' txtSearch
+        ' 
+        txtSearch.Location = New Point(820, 38)
+        txtSearch.Name = "txtSearch"
+        txtSearch.Size = New Size(241, 23)
+        txtSearch.TabIndex = 16
+        ' 
+        ' btnSearch
+        ' 
+        btnSearch.Enabled = False
+        btnSearch.FlatStyle = FlatStyle.System
+        btnSearch.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnSearch.Location = New Point(1076, 34)
+        btnSearch.Name = "btnSearch"
+        btnSearch.Size = New Size(53, 27)
+        btnSearch.TabIndex = 17
+        btnSearch.Text = "Go"
+        btnSearch.UseVisualStyleBackColor = True
+        ' 
+        ' btnUndo
+        ' 
+        btnUndo.Enabled = False
+        btnUndo.FlatStyle = FlatStyle.System
+        btnUndo.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnUndo.Location = New Point(1135, 34)
+        btnUndo.Name = "btnUndo"
+        btnUndo.Size = New Size(53, 27)
+        btnUndo.TabIndex = 18
+        btnUndo.Text = "Undo"
+        btnUndo.UseVisualStyleBackColor = True
         ' 
         ' frmMain
         ' 
         BackColor = SystemColors.ActiveCaption
         ClientSize = New Size(1662, 871)
-        Controls.Add(lblVersion)
-        Controls.Add(btnVersionReport)
+        Controls.Add(btnUndo)
+        Controls.Add(btnSearch)
+        Controls.Add(txtSearch)
+        Controls.Add(lblSearch)
         Controls.Add(lblScriptVersion)
         Controls.Add(dgvEventLibraryEvents)
         Controls.Add(lblEventFunction)
@@ -291,12 +323,15 @@ Partial Class frmMain
     Friend WithEvents SqlCommand1 As Microsoft.Data.SqlClient.SqlCommand
     Friend WithEvents lblEventFunction As Label
     Friend WithEvents lblScriptVersion As Label
-    Friend WithEvents btnVersionReport As System.Windows.Forms.Button
-    Friend WithEvents lblVersion As Label
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents tsMenu As ToolStripMenuItem
-    Friend WithEvents LinksToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ImportDataToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ReportsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents tsVersionByClient As ToolStripMenuItem
+    Friend WithEvents tsAbout As ToolStripMenuItem
+    Friend WithEvents lblSearch As Label
+    Friend WithEvents txtSearch As System.Windows.Forms.TextBox
+    Friend WithEvents btnSearch As System.Windows.Forms.Button
+    Friend WithEvents btnUndo As System.Windows.Forms.Button
 
 
 
