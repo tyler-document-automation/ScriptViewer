@@ -50,6 +50,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -190,15 +198,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ScriptViewer"
-        "ProductCode" = "8:{91D2DBE0-BBCE-4ED1-BB3B-A3D3007498C2}"
-        "PackageCode" = "8:{9F443B65-625F-4656-8688-F16A6FB9705A}"
-        "UpgradeCode" = "8:{FAF79389-C496-49A9-94D1-209BA4E6B491}"
+        "ProductCode" = "8:{8B958942-F207-42F6-AC76-EBFFC2651000}"
+        "PackageCode" = "8:{719DA3EA-8599-496E-976D-1360AE803B11}"
+        "UpgradeCode" = "8:{69DF329E-F87A-4D21-845B-52FDCE66C659}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.0.2"
         "Manufacturer" = "8:Tyler"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -726,7 +734,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_17F2D9C04D144E7893D6EC72DD8A553D"
             {
-            "SourcePath" = "8:..\\obj\\Release\\net8.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\obj\\Debug\\net8.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_9A81A72E1D4F4482896B764AB66DFC39"
