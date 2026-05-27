@@ -139,6 +139,7 @@ Partial Class frmMain
         fctbScript.AutoCompleteBracketsList = New Char() {"("c, ")"c, "{"c, "}"c, "["c, "]"c, """"c, """"c, "'"c, "'"c}
         fctbScript.AutoIndentCharsPatterns = "^\s*[\w\.]+(\s\w+)?\s*(?<range>=)\s*(?<range>[^;=]+);" & vbCrLf & "^\s*(case|default)\s*[^:]*(?<range>:)\s*(?<range>[^;]+);"
         fctbScript.AutoScrollMinSize = New Size(31, 18)
+        fctbScript.AutoSize = True
         fctbScript.BackBrush = Nothing
         fctbScript.BackColor = Color.LightGray
         fctbScript.CharHeight = 18
@@ -147,12 +148,12 @@ Partial Class frmMain
         fctbScript.Font = New Font("Courier New", 12F)
         fctbScript.Hotkeys = resources.GetString("fctbScript.Hotkeys")
         fctbScript.IsReplaceMode = False
-        fctbScript.Location = New Point(281, 80)
+        fctbScript.Location = New Point(275, 80)
         fctbScript.Name = "fctbScript"
         fctbScript.Paddings = New Padding(0)
         fctbScript.SelectionColor = Color.FromArgb(CByte(60), CByte(0), CByte(0), CByte(255))
         fctbScript.ServiceColors = CType(resources.GetObject("fctbScript.ServiceColors"), ServiceColors)
-        fctbScript.Size = New Size(1326, 779)
+        fctbScript.Size = New Size(1444, 779)
         fctbScript.TabIndex = 6
         fctbScript.Visible = False
         fctbScript.Zoom = 100
@@ -210,7 +211,7 @@ Partial Class frmMain
         MenuStrip1.Items.AddRange(New ToolStripItem() {ReportsToolStripMenuItem, tsMenu})
         MenuStrip1.Location = New Point(0, 0)
         MenuStrip1.Name = "MenuStrip1"
-        MenuStrip1.Size = New Size(1662, 24)
+        MenuStrip1.Size = New Size(1731, 24)
         MenuStrip1.TabIndex = 13
         MenuStrip1.Text = "MenuStrip1"
         ' 
@@ -284,7 +285,7 @@ Partial Class frmMain
         ' frmMain
         ' 
         BackColor = SystemColors.ActiveCaption
-        ClientSize = New Size(1662, 871)
+        ClientSize = New Size(1731, 930)
         Controls.Add(btnUndo)
         Controls.Add(btnSearch)
         Controls.Add(txtSearch)
@@ -301,10 +302,8 @@ Partial Class frmMain
         Controls.Add(cmbClients)
         Controls.Add(MenuStrip1)
         Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        FormBorderStyle = FormBorderStyle.Fixed3D
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         MainMenuStrip = MenuStrip1
-        MaximizeBox = False
         Name = "frmMain"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Script Viewer"
