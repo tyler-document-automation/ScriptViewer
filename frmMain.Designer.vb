@@ -58,6 +58,7 @@ Partial Class frmMain
         btnUndo = New System.Windows.Forms.Button()
         btnAPI = New System.Windows.Forms.Button()
         fctbScript = New FastColoredTextBox()
+        chkSearchAll = New CheckBox()
         CType(dgvEventLibraries, ComponentModel.ISupportInitialize).BeginInit()
         CType(dgvEventLibraryEvents, ComponentModel.ISupportInitialize).BeginInit()
         MenuStrip1.SuspendLayout()
@@ -243,7 +244,7 @@ Partial Class frmMain
         btnUndo.Enabled = False
         btnUndo.FlatStyle = FlatStyle.System
         btnUndo.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnUndo.Location = New Point(1135, 34)
+        btnUndo.Location = New Point(1076, 67)
         btnUndo.Name = "btnUndo"
         btnUndo.Size = New Size(53, 27)
         btnUndo.TabIndex = 18
@@ -275,21 +276,32 @@ Partial Class frmMain
         fctbScript.ForeColor = SystemColors.ActiveCaptionText
         fctbScript.Hotkeys = resources.GetString("fctbScript.Hotkeys")
         fctbScript.IsReplaceMode = False
-        fctbScript.Location = New Point(277, 158)
+        fctbScript.Location = New Point(277, 100)
         fctbScript.Name = "fctbScript"
         fctbScript.Paddings = New Padding(0)
         fctbScript.SelectionColor = Color.FromArgb(CByte(60), CByte(0), CByte(0), CByte(255))
         fctbScript.ServiceColors = CType(resources.GetObject("fctbScript.ServiceColors"), ServiceColors)
-        fctbScript.Size = New Size(1190, 701)
+        fctbScript.Size = New Size(1190, 759)
         fctbScript.TabIndex = 6
         fctbScript.Visible = False
         fctbScript.Zoom = 100
+        ' 
+        ' chkSearchAll
+        ' 
+        chkSearchAll.AutoSize = True
+        chkSearchAll.Location = New Point(820, 67)
+        chkSearchAll.Name = "chkSearchAll"
+        chkSearchAll.Size = New Size(120, 19)
+        chkSearchAll.TabIndex = 20
+        chkSearchAll.Text = "Search all Clients?"
+        chkSearchAll.UseVisualStyleBackColor = True
         ' 
         ' frmMain
         ' 
         AcceptButton = btnSearch
         BackColor = SystemColors.ActiveCaption
         ClientSize = New Size(1479, 872)
+        Controls.Add(chkSearchAll)
         Controls.Add(fctbScript)
         Controls.Add(btnAPI)
         Controls.Add(btnUndo)
@@ -335,6 +347,7 @@ Partial Class frmMain
     Friend WithEvents btnUndo As System.Windows.Forms.Button
     Friend WithEvents btnAPI As System.Windows.Forms.Button
     Friend WithEvents fctbScript As FastColoredTextBox
+    Friend WithEvents chkSearchAll As CheckBox
 
 
 
