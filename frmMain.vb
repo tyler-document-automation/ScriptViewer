@@ -11,10 +11,11 @@ Imports FastColoredTextBoxNS
 Imports MaterialSkin
 Imports Microsoft.Data.SqlClient
 Imports MaterialSkin.Controls
-
+Imports System.Drawing.Text
 
 Imports Newtonsoft.Json.Linq
 Imports System.Threading
+
 
 
 Public Class frmMain
@@ -24,10 +25,16 @@ Public Class frmMain
     Public Shared librarytype As String
     Public Shared connectionString
 
-
-
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
+            'MaterialSkin.MaterialSkinManager.Instance.AddFormToManage(Me)
+
+            'fctbScript.Font = New Font("Consolas", 10.0F, FontStyle.Regular, GraphicsUnit.Point)
+            'fctbScript.Zoom = 100
+            'fctbScript.BackColor = Color.LightGray
+            'fctbScript.ForeColor = Color.Black
+
+
             'Dim skinManager = MaterialSkinManager.Instance
 
             'skinManager.AddFormToManage(Me)
@@ -41,7 +48,12 @@ Public Class frmMain
 
             'Me.FormBorderStyle = FormBorderStyle.Sizable
 
-            fctbScript.Font = New Font("Courier New", 12.0F)
+            'fctbScript.Font = New Font("Consolas", 12.0F, FontStyle.Bold, GraphicsUnit.Point) 'New Font("Courier New", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+
+            ' Restore FCTB appearance
+            'fctbScript.Font = New Font("Courier New", 12.0F, FontStyle.Regular)
+            'fctbScript.BackColor = Color.White
+            'fctbScript.ForeColor = Color.Black
 
             CreateConnection()
             LoadClientList()
@@ -49,6 +61,7 @@ Public Class frmMain
             'lblVersion.Text = "Version: " & Assembly.GetExecutingAssembly().GetName().Version.ToString
 
             'Me.WindowState = FormWindowState.Maximized
+
 
         Catch ex As Exception
             MessageBox.Show("Database connection failed: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -492,7 +505,6 @@ Public Class frmMain
     Friend WithEvents btnEventLibraries As System.Windows.Forms.Button
     Friend WithEvents btnCustomLibraries As System.Windows.Forms.Button
     Friend WithEvents dgvEventLibraryEvents As DataGridView
-    Friend WithEvents fctbScript As FastColoredTextBoxNS.FastColoredTextBox
 
     Private Sub tsVersionByClient_Click(sender As Object, e As EventArgs) Handles tsVersionByClient.Click
         frmVersionReport.ShowDialog()

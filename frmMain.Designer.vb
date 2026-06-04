@@ -43,7 +43,6 @@ Partial Class frmMain
         btnEventLibraries = New System.Windows.Forms.Button()
         btnCustomLibraries = New System.Windows.Forms.Button()
         dgvEventLibraryEvents = New DataGridView()
-        fctbScript = New FastColoredTextBox()
         lblLibraryType = New Label()
         SqlCommand1 = New Microsoft.Data.SqlClient.SqlCommand()
         lblEventFunction = New Label()
@@ -58,10 +57,11 @@ Partial Class frmMain
         btnSearch = New System.Windows.Forms.Button()
         btnUndo = New System.Windows.Forms.Button()
         btnAPI = New System.Windows.Forms.Button()
+        fctbScript = New FastColoredTextBox()
         CType(dgvEventLibraries, ComponentModel.ISupportInitialize).BeginInit()
         CType(dgvEventLibraryEvents, ComponentModel.ISupportInitialize).BeginInit()
-        CType(fctbScript, ComponentModel.ISupportInitialize).BeginInit()
         MenuStrip1.SuspendLayout()
+        CType(fctbScript, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' cmbClients
@@ -69,7 +69,7 @@ Partial Class frmMain
         cmbClients.DropDownStyle = ComboBoxStyle.DropDownList
         cmbClients.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cmbClients.FormattingEnabled = True
-        cmbClients.Location = New Point(147, 31)
+        cmbClients.Location = New Point(12, 33)
         cmbClients.Name = "cmbClients"
         cmbClients.Size = New Size(291, 28)
         cmbClients.Sorted = True
@@ -136,31 +136,6 @@ Partial Class frmMain
         dgvEventLibraryEvents.TabIndex = 4
         dgvEventLibraryEvents.Visible = False
         ' 
-        ' fctbScript
-        ' 
-        fctbScript.AutoCompleteBracketsList = New Char() {"("c, ")"c, "{"c, "}"c, "["c, "]"c, """"c, """"c, "'"c, "'"c}
-        fctbScript.AutoIndentCharsPatterns = "^\s*[\w\.]+(\s\w+)?\s*(?<range>=)\s*(?<range>[^;=]+);" & vbCrLf & "^\s*(case|default)\s*[^:]*(?<range>:)\s*(?<range>[^;]+);"
-        fctbScript.AutoScrollMinSize = New Size(31, 18)
-        fctbScript.AutoSize = True
-        fctbScript.BackBrush = Nothing
-        fctbScript.BackColor = Color.LightGray
-        fctbScript.CharHeight = 18
-        fctbScript.CharWidth = 10
-        fctbScript.DisabledColor = Color.FromArgb(CByte(100), CByte(180), CByte(180), CByte(180))
-        fctbScript.Font = New Font("Courier New", 12F, FontStyle.Bold)
-        fctbScript.ForeColor = SystemColors.ActiveCaptionText
-        fctbScript.Hotkeys = resources.GetString("fctbScript.Hotkeys")
-        fctbScript.IsReplaceMode = False
-        fctbScript.Location = New Point(267, 135)
-        fctbScript.Name = "fctbScript"
-        fctbScript.Paddings = New Padding(0)
-        fctbScript.SelectionColor = Color.FromArgb(CByte(60), CByte(0), CByte(0), CByte(255))
-        fctbScript.ServiceColors = CType(resources.GetObject("fctbScript.ServiceColors"), ServiceColors)
-        fctbScript.Size = New Size(1190, 701)
-        fctbScript.TabIndex = 6
-        fctbScript.Visible = False
-        fctbScript.Zoom = 100
-        ' 
         ' lblLibraryType
         ' 
         lblLibraryType.AutoSize = True
@@ -192,7 +167,7 @@ Partial Class frmMain
         ' 
         lblScriptVersion.AutoSize = True
         lblScriptVersion.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblScriptVersion.Location = New Point(502, 34)
+        lblScriptVersion.Location = New Point(328, 36)
         lblScriptVersion.Name = "lblScriptVersion"
         lblScriptVersion.Size = New Size(133, 20)
         lblScriptVersion.TabIndex = 10
@@ -285,11 +260,37 @@ Partial Class frmMain
         btnAPI.UseVisualStyleBackColor = True
         btnAPI.Visible = False
         ' 
+        ' fctbScript
+        ' 
+        fctbScript.AutoCompleteBracketsList = New Char() {"("c, ")"c, "{"c, "}"c, "["c, "]"c, """"c, """"c, "'"c, "'"c}
+        fctbScript.AutoIndentCharsPatterns = "^\s*[\w\.]+(\s\w+)?\s*(?<range>=)\s*(?<range>[^;=]+);" & vbCrLf & "^\s*(case|default)\s*[^:]*(?<range>:)\s*(?<range>[^;]+);"
+        fctbScript.AutoScrollMinSize = New Size(31, 18)
+        fctbScript.AutoSize = True
+        fctbScript.BackBrush = Nothing
+        fctbScript.BackColor = Color.LightGray
+        fctbScript.CharHeight = 18
+        fctbScript.CharWidth = 10
+        fctbScript.DisabledColor = Color.FromArgb(CByte(100), CByte(180), CByte(180), CByte(180))
+        fctbScript.Font = New Font("Courier New", 12.0F, FontStyle.Bold)
+        fctbScript.ForeColor = SystemColors.ActiveCaptionText
+        fctbScript.Hotkeys = resources.GetString("fctbScript.Hotkeys")
+        fctbScript.IsReplaceMode = False
+        fctbScript.Location = New Point(277, 158)
+        fctbScript.Name = "fctbScript"
+        fctbScript.Paddings = New Padding(0)
+        fctbScript.SelectionColor = Color.FromArgb(CByte(60), CByte(0), CByte(0), CByte(255))
+        fctbScript.ServiceColors = CType(resources.GetObject("fctbScript.ServiceColors"), ServiceColors)
+        fctbScript.Size = New Size(1190, 701)
+        fctbScript.TabIndex = 6
+        fctbScript.Visible = False
+        fctbScript.Zoom = 100
+        ' 
         ' frmMain
         ' 
         AcceptButton = btnSearch
         BackColor = SystemColors.ActiveCaption
-        ClientSize = New Size(1479, 930)
+        ClientSize = New Size(1479, 872)
+        Controls.Add(fctbScript)
         Controls.Add(btnAPI)
         Controls.Add(btnUndo)
         Controls.Add(btnSearch)
@@ -300,12 +301,11 @@ Partial Class frmMain
         Controls.Add(lblEventFunction)
         Controls.Add(lblLibraryType)
         Controls.Add(dgvEventLibraries)
-        Controls.Add(fctbScript)
         Controls.Add(btnCustomLibraries)
         Controls.Add(btnEventLibraries)
         Controls.Add(cmbClients)
         Controls.Add(MenuStrip1)
-        Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Font = New Font("Segoe UI", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         MainMenuStrip = MenuStrip1
         Name = "frmMain"
@@ -313,9 +313,9 @@ Partial Class frmMain
         Text = "Script Viewer"
         CType(dgvEventLibraries, ComponentModel.ISupportInitialize).EndInit()
         CType(dgvEventLibraryEvents, ComponentModel.ISupportInitialize).EndInit()
-        CType(fctbScript, ComponentModel.ISupportInitialize).EndInit()
         MenuStrip1.ResumeLayout(False)
         MenuStrip1.PerformLayout()
+        CType(fctbScript, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
         ' Me.Text = "Form1"
@@ -334,6 +334,7 @@ Partial Class frmMain
     Friend WithEvents btnSearch As System.Windows.Forms.Button
     Friend WithEvents btnUndo As System.Windows.Forms.Button
     Friend WithEvents btnAPI As System.Windows.Forms.Button
+    Friend WithEvents fctbScript As FastColoredTextBox
 
 
 
