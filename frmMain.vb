@@ -2,20 +2,47 @@
 Imports System.Data.Common
 Imports System.Data.SqlClient
 Imports System.Data.SqlTypes
+Imports System.Net.Http
+Imports System.Net.Http.Headers
 Imports System.Reflection
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
 Imports FastColoredTextBoxNS
+Imports MaterialSkin
 Imports Microsoft.Data.SqlClient
+Imports MaterialSkin.Controls
+
+
+Imports Newtonsoft.Json.Linq
+Imports System.Threading
 
 
 Public Class frmMain
+    'Inherits MaterialForm
     'Public Shared _connIntellidact As SqlConnection
     Public Shared _connScriptViewer As SqlConnection
     Public Shared librarytype As String
     Public Shared connectionString
 
+
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
+            'Dim skinManager = MaterialSkinManager.Instance
+
+            'skinManager.AddFormToManage(Me)
+            'skinManager.Theme = MaterialSkinManager.Themes.LIGHT
+            'skinManager.ColorScheme = New ColorScheme(
+            '    Primary.Blue500,
+            '    Primary.Blue700,
+            '    Primary.Blue100,
+            '    Accent.LightBlue200,
+            '    TextShade.WHITE)
+
+            'Me.FormBorderStyle = FormBorderStyle.Sizable
+
+            fctbScript.Font = New Font("Courier New", 12.0F)
+
             CreateConnection()
             LoadClientList()
 
@@ -495,6 +522,49 @@ Public Class frmMain
         lblEventFunction.Visible = False
         fctbScript.Visible = False
     End Sub
+
+    Private Async Sub btnGetBatches_Click(sender As Object, e As EventArgs) Handles btnAPI.Click
+
+        Try
+            Await GetBatchesAsync()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+
+    End Sub
+
+
+
+    Private Async Function GetBatchesAsync() As Task
+
+        Dim apiUrl As String =
+        "https://dev-us-east-1.prod.docauto.tylerapp.com/d-nd-state/core-api/api/transactional/batches"
+
+        Using client As New HttpClient()
+
+            client.DefaultRequestHeaders.Clear()
+
+            client.DefaultRequestHeaders.TryAddWithoutValidation(
+            "Accept",
+            "application/json;odata.metadata=minimal;odata.streaming=true"
+        )
+
+            client.DefaultRequestHeaders.TryAddWithoutValidation("csi-AppName", "csi-ApiKey")
+            client.DefaultRequestHeaders.TryAddWithoutValidation("csi-ApiKey", "bvarnell")
+
+            Dim response As HttpResponseMessage = Await client.GetAsync(apiUrl)
+            Dim body As String = Await response.Content.ReadAsStringAsync()
+
+            MessageBox.Show(
+            "Status: " & CInt(response.StatusCode).ToString() &
+            " " & response.ReasonPhrase &
+            vbCrLf & vbCrLf &
+            body
+        )
+
+        End Using
+
+    End Function
 
 
 End Class
