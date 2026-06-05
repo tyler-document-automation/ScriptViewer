@@ -8,9 +8,7 @@ Imports System.Reflection
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
 Imports FastColoredTextBoxNS
-Imports MaterialSkin
 Imports Microsoft.Data.SqlClient
-Imports MaterialSkin.Controls
 Imports System.Drawing.Text
 
 Imports Newtonsoft.Json.Linq
@@ -19,7 +17,6 @@ Imports System.Threading
 
 
 Public Class frmMain
-    'Inherits MaterialForm
     'Public Shared _connIntellidact As SqlConnection
     Public Shared _connScriptViewer As SqlConnection
     Public Shared librarytype As String
@@ -27,40 +24,10 @@ Public Class frmMain
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
-            'MaterialSkin.MaterialSkinManager.Instance.AddFormToManage(Me)
 
-            'fctbScript.Font = New Font("Consolas", 10.0F, FontStyle.Regular, GraphicsUnit.Point)
-            'fctbScript.Zoom = 100
-            'fctbScript.BackColor = Color.LightGray
-            'fctbScript.ForeColor = Color.Black
-
-
-            'Dim skinManager = MaterialSkinManager.Instance
-
-            'skinManager.AddFormToManage(Me)
-            'skinManager.Theme = MaterialSkinManager.Themes.LIGHT
-            'skinManager.ColorScheme = New ColorScheme(
-            '    Primary.Blue500,
-            '    Primary.Blue700,
-            '    Primary.Blue100,
-            '    Accent.LightBlue200,
-            '    TextShade.WHITE)
-
-            'Me.FormBorderStyle = FormBorderStyle.Sizable
-
-            'fctbScript.Font = New Font("Consolas", 12.0F, FontStyle.Bold, GraphicsUnit.Point) 'New Font("Courier New", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
-
-            ' Restore FCTB appearance
-            'fctbScript.Font = New Font("Courier New", 12.0F, FontStyle.Regular)
-            'fctbScript.BackColor = Color.White
-            'fctbScript.ForeColor = Color.Black
 
             CreateConnection()
             LoadClientList()
-
-            'lblVersion.Text = "Version: " & Assembly.GetExecutingAssembly().GetName().Version.ToString
-
-            'Me.WindowState = FormWindowState.Maximized
 
 
         Catch ex As Exception

@@ -272,7 +272,7 @@ Partial Class frmMain
         fctbScript.CharHeight = 18
         fctbScript.CharWidth = 10
         fctbScript.DisabledColor = Color.FromArgb(CByte(100), CByte(180), CByte(180), CByte(180))
-        fctbScript.Font = New Font("Courier New", 12.0F, FontStyle.Bold)
+        fctbScript.Font = New Font("Courier New", 12F, FontStyle.Bold)
         fctbScript.ForeColor = SystemColors.ActiveCaptionText
         fctbScript.Hotkeys = resources.GetString("fctbScript.Hotkeys")
         fctbScript.IsReplaceMode = False
@@ -317,7 +317,7 @@ Partial Class frmMain
         Controls.Add(btnEventLibraries)
         Controls.Add(cmbClients)
         Controls.Add(MenuStrip1)
-        Font = New Font("Segoe UI", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         MainMenuStrip = MenuStrip1
         Name = "frmMain"
