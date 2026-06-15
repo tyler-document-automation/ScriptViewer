@@ -295,6 +295,7 @@ Partial Class frmMain
         chkSearchAll.TabIndex = 20
         chkSearchAll.Text = "Search all Clients?"
         chkSearchAll.UseVisualStyleBackColor = True
+        chkSearchAll.Visible = False
         ' 
         ' frmMain
         ' 
