@@ -59,10 +59,12 @@ Partial Class frmMain
         btnAPI = New System.Windows.Forms.Button()
         fctbScript = New FastColoredTextBox()
         chkSearchAll = New CheckBox()
+        Panel1 = New Panel()
         CType(dgvEventLibraries, ComponentModel.ISupportInitialize).BeginInit()
         CType(dgvEventLibraryEvents, ComponentModel.ISupportInitialize).BeginInit()
         MenuStrip1.SuspendLayout()
         CType(fctbScript, ComponentModel.ISupportInitialize).BeginInit()
+        Panel1.SuspendLayout()
         SuspendLayout()
         ' 
         ' cmbClients
@@ -70,7 +72,7 @@ Partial Class frmMain
         cmbClients.DropDownStyle = ComboBoxStyle.DropDownList
         cmbClients.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cmbClients.FormattingEnabled = True
-        cmbClients.Location = New Point(12, 33)
+        cmbClients.Location = New Point(15, 8)
         cmbClients.Name = "cmbClients"
         cmbClients.Size = New Size(291, 28)
         cmbClients.Sorted = True
@@ -100,7 +102,7 @@ Partial Class frmMain
         btnEventLibraries.Enabled = False
         btnEventLibraries.FlatStyle = FlatStyle.System
         btnEventLibraries.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnEventLibraries.Location = New Point(12, 77)
+        btnEventLibraries.Location = New Point(15, 42)
         btnEventLibraries.Name = "btnEventLibraries"
         btnEventLibraries.Size = New Size(102, 36)
         btnEventLibraries.TabIndex = 2
@@ -112,7 +114,7 @@ Partial Class frmMain
         btnCustomLibraries.Enabled = False
         btnCustomLibraries.FlatStyle = FlatStyle.System
         btnCustomLibraries.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnCustomLibraries.Location = New Point(120, 77)
+        btnCustomLibraries.Location = New Point(123, 42)
         btnCustomLibraries.Name = "btnCustomLibraries"
         btnCustomLibraries.Size = New Size(133, 36)
         btnCustomLibraries.TabIndex = 3
@@ -168,7 +170,7 @@ Partial Class frmMain
         ' 
         lblScriptVersion.AutoSize = True
         lblScriptVersion.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblScriptVersion.Location = New Point(328, 36)
+        lblScriptVersion.Location = New Point(332, 11)
         lblScriptVersion.Name = "lblScriptVersion"
         lblScriptVersion.Size = New Size(133, 20)
         lblScriptVersion.TabIndex = 10
@@ -214,7 +216,7 @@ Partial Class frmMain
         ' 
         lblSearch.AutoSize = True
         lblSearch.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblSearch.Location = New Point(758, 37)
+        lblSearch.Location = New Point(734, 17)
         lblSearch.Name = "lblSearch"
         lblSearch.Size = New Size(56, 20)
         lblSearch.TabIndex = 15
@@ -222,7 +224,7 @@ Partial Class frmMain
         ' 
         ' txtSearch
         ' 
-        txtSearch.Location = New Point(820, 38)
+        txtSearch.Location = New Point(796, 18)
         txtSearch.Name = "txtSearch"
         txtSearch.Size = New Size(241, 23)
         txtSearch.TabIndex = 16
@@ -232,7 +234,7 @@ Partial Class frmMain
         btnSearch.Enabled = False
         btnSearch.FlatStyle = FlatStyle.System
         btnSearch.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnSearch.Location = New Point(1076, 34)
+        btnSearch.Location = New Point(1052, 14)
         btnSearch.Name = "btnSearch"
         btnSearch.Size = New Size(53, 27)
         btnSearch.TabIndex = 17
@@ -244,7 +246,7 @@ Partial Class frmMain
         btnUndo.Enabled = False
         btnUndo.FlatStyle = FlatStyle.System
         btnUndo.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnUndo.Location = New Point(1076, 67)
+        btnUndo.Location = New Point(1052, 47)
         btnUndo.Name = "btnUndo"
         btnUndo.Size = New Size(53, 27)
         btnUndo.TabIndex = 18
@@ -272,16 +274,16 @@ Partial Class frmMain
         fctbScript.CharHeight = 18
         fctbScript.CharWidth = 10
         fctbScript.DisabledColor = Color.FromArgb(CByte(100), CByte(180), CByte(180), CByte(180))
-        fctbScript.Font = New Font("Courier New", 12F, FontStyle.Bold)
+        fctbScript.Font = New Font("Courier New", 12.0F, FontStyle.Bold)
         fctbScript.ForeColor = SystemColors.ActiveCaptionText
         fctbScript.Hotkeys = resources.GetString("fctbScript.Hotkeys")
         fctbScript.IsReplaceMode = False
-        fctbScript.Location = New Point(277, 100)
+        fctbScript.Location = New Point(277, 158)
         fctbScript.Name = "fctbScript"
         fctbScript.Paddings = New Padding(0)
         fctbScript.SelectionColor = Color.FromArgb(CByte(60), CByte(0), CByte(0), CByte(255))
         fctbScript.ServiceColors = CType(resources.GetObject("fctbScript.ServiceColors"), ServiceColors)
-        fctbScript.Size = New Size(1190, 759)
+        fctbScript.Size = New Size(1190, 701)
         fctbScript.TabIndex = 6
         fctbScript.Visible = False
         fctbScript.Zoom = 100
@@ -289,38 +291,49 @@ Partial Class frmMain
         ' chkSearchAll
         ' 
         chkSearchAll.AutoSize = True
-        chkSearchAll.Location = New Point(820, 67)
+        chkSearchAll.Location = New Point(796, 47)
         chkSearchAll.Name = "chkSearchAll"
         chkSearchAll.Size = New Size(120, 19)
         chkSearchAll.TabIndex = 20
         chkSearchAll.Text = "Search all Clients?"
         chkSearchAll.UseVisualStyleBackColor = True
-        chkSearchAll.Visible = False
+        ' 
+        ' Panel1
+        ' 
+        Panel1.Controls.Add(cmbClients)
+        Panel1.Controls.Add(chkSearchAll)
+        Panel1.Controls.Add(btnEventLibraries)
+        Panel1.Controls.Add(btnCustomLibraries)
+        Panel1.Controls.Add(lblScriptVersion)
+        Panel1.Controls.Add(btnUndo)
+        Panel1.Controls.Add(btnSearch)
+        Panel1.Controls.Add(lblSearch)
+        Panel1.Controls.Add(txtSearch)
+        Panel1.Dock = DockStyle.Top
+        Panel1.Location = New Point(0, 24)
+        Panel1.Name = "Panel1"
+        Panel1.Size = New Size(1479, 94)
+        Panel1.TabIndex = 21
         ' 
         ' frmMain
         ' 
         AcceptButton = btnSearch
+        AutoScaleDimensions = New SizeF(96.0F, 96.0F)
+        AutoScaleMode = AutoScaleMode.Dpi
         BackColor = SystemColors.ActiveCaption
         ClientSize = New Size(1479, 872)
-        Controls.Add(chkSearchAll)
+        Controls.Add(Panel1)
         Controls.Add(fctbScript)
         Controls.Add(btnAPI)
-        Controls.Add(btnUndo)
-        Controls.Add(btnSearch)
-        Controls.Add(txtSearch)
-        Controls.Add(lblSearch)
-        Controls.Add(lblScriptVersion)
         Controls.Add(dgvEventLibraryEvents)
         Controls.Add(lblEventFunction)
         Controls.Add(lblLibraryType)
         Controls.Add(dgvEventLibraries)
-        Controls.Add(btnCustomLibraries)
-        Controls.Add(btnEventLibraries)
-        Controls.Add(cmbClients)
         Controls.Add(MenuStrip1)
-        Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Font = New Font("Segoe UI", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         MainMenuStrip = MenuStrip1
+        MaximumSize = New Size(1495, 911)
         Name = "frmMain"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Script Viewer"
@@ -329,6 +342,8 @@ Partial Class frmMain
         MenuStrip1.ResumeLayout(False)
         MenuStrip1.PerformLayout()
         CType(fctbScript, ComponentModel.ISupportInitialize).EndInit()
+        Panel1.ResumeLayout(False)
+        Panel1.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
         ' Me.Text = "Form1"
@@ -349,6 +364,7 @@ Partial Class frmMain
     Friend WithEvents btnAPI As System.Windows.Forms.Button
     Friend WithEvents fctbScript As FastColoredTextBox
     Friend WithEvents chkSearchAll As CheckBox
+    Friend WithEvents Panel1 As Panel
 
 
 

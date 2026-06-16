@@ -484,12 +484,14 @@ Public Class frmMain
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         If String.IsNullOrWhiteSpace(txtSearch.Text) Then
             MsgBox("Please enter a search value")
-        Else
+        ElseIf chkSearchAll.Checked = False Then
             dgvEventLibraries.Visible = False
             dgvEventLibraryEvents.Visible = False
             lblLibraryType.Visible = False
             lblEventFunction.Visible = False
             fctbScript.Visible = False
+        ElseIf chkSearchAll.Checked = True Then
+            MsgBox("test", Title:="test")
         End If
     End Sub
 
