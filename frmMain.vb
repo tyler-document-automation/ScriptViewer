@@ -103,42 +103,7 @@ Public Class frmMain
 
     End Sub
 
-    'Private Sub LoadClientListOld()
 
-    '    'Dim connectionString As String = ConfigurationManager.ConnectionStrings("ScriptViewer").ConnectionString
-
-    '    Using _connScriptViewer = New SqlConnection(connectionString)
-    '        Try
-
-    '            Using cmd As New SqlCommand("GetScripts", _connScriptViewer)
-    '                cmd.CommandType = CommandType.StoredProcedure
-
-    '                cmd.Parameters.AddWithValue("@querytype", 0)
-
-    '                _connScriptViewer.Open()
-    '                Dim reader As SqlDataReader = cmd.ExecuteReader()
-
-    '                cmbClients.Items.Clear()
-
-    '                cmbClients.Items.Add("--Select client...--")
-
-    '                While reader.Read()
-    '                    cmbClients.Items.Add(reader("clientname").ToString())
-    '                End While
-
-    '                _connScriptViewer.Close()
-
-    '                cmbClients.SelectedIndex = 0
-
-    '            End Using
-
-
-    '        Catch ex As Exception
-    '            MessageBox.Show("Error loading client list. " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    '        End Try
-    '    End Using
-
-    'End Sub
 
     Private Sub cmbClients_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cmbClients.SelectionChangeCommitted
 
@@ -467,11 +432,10 @@ Public Class frmMain
         MsgBox("open import data")
     End Sub
 
-    Friend WithEvents cmbClients As System.Windows.Forms.ComboBox
-    Friend WithEvents dgvEventLibraries As DataGridView
-    Friend WithEvents btnEventLibraries As System.Windows.Forms.Button
-    Friend WithEvents btnCustomLibraries As System.Windows.Forms.Button
-    Friend WithEvents dgvEventLibraryEvents As DataGridView
+    'Friend WithEvents dgvEventLibraries As DataGridView
+    'Friend WithEvents btnEventLibraries As System.Windows.Forms.Button
+    'Friend WithEvents btnCustomLibraries As System.Windows.Forms.Button
+    'Friend WithEvents dgvEventLibraryEvents As DataGridView
 
     Private Sub tsVersionByClient_Click(sender As Object, e As EventArgs) Handles tsVersionByClient.Click
         frmVersionReport.ShowDialog()

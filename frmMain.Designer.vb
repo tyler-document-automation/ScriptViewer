@@ -38,7 +38,6 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
-        cmbClients = New System.Windows.Forms.ComboBox()
         dgvEventLibraries = New DataGridView()
         btnEventLibraries = New System.Windows.Forms.Button()
         btnCustomLibraries = New System.Windows.Forms.Button()
@@ -60,23 +59,13 @@ Partial Class frmMain
         fctbScript = New FastColoredTextBox()
         chkSearchAll = New CheckBox()
         Panel1 = New Panel()
+        cmbClients = New System.Windows.Forms.ComboBox()
         CType(dgvEventLibraries, ComponentModel.ISupportInitialize).BeginInit()
         CType(dgvEventLibraryEvents, ComponentModel.ISupportInitialize).BeginInit()
         MenuStrip1.SuspendLayout()
         CType(fctbScript, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         SuspendLayout()
-        ' 
-        ' cmbClients
-        ' 
-        cmbClients.DropDownStyle = ComboBoxStyle.DropDownList
-        cmbClients.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        cmbClients.FormattingEnabled = True
-        cmbClients.Location = New Point(15, 8)
-        cmbClients.Name = "cmbClients"
-        cmbClients.Size = New Size(291, 28)
-        cmbClients.Sorted = True
-        cmbClients.TabIndex = 0
         ' 
         ' dgvEventLibraries
         ' 
@@ -274,7 +263,7 @@ Partial Class frmMain
         fctbScript.CharHeight = 18
         fctbScript.CharWidth = 10
         fctbScript.DisabledColor = Color.FromArgb(CByte(100), CByte(180), CByte(180), CByte(180))
-        fctbScript.Font = New Font("Courier New", 12.0F, FontStyle.Bold)
+        fctbScript.Font = New Font("Courier New", 12F, FontStyle.Bold)
         fctbScript.ForeColor = SystemColors.ActiveCaptionText
         fctbScript.Hotkeys = resources.GetString("fctbScript.Hotkeys")
         fctbScript.IsReplaceMode = False
@@ -315,10 +304,19 @@ Partial Class frmMain
         Panel1.Size = New Size(1479, 94)
         Panel1.TabIndex = 21
         ' 
+        ' cmbClients
+        ' 
+        cmbClients.DropDownStyle = ComboBoxStyle.DropDownList
+        cmbClients.FormattingEnabled = True
+        cmbClients.Location = New Point(16, 9)
+        cmbClients.Name = "cmbClients"
+        cmbClients.Size = New Size(298, 23)
+        cmbClients.TabIndex = 21
+        ' 
         ' frmMain
         ' 
         AcceptButton = btnSearch
-        AutoScaleDimensions = New SizeF(96.0F, 96.0F)
+        AutoScaleDimensions = New SizeF(96F, 96F)
         AutoScaleMode = AutoScaleMode.Dpi
         BackColor = SystemColors.ActiveCaption
         ClientSize = New Size(1479, 872)
@@ -330,7 +328,7 @@ Partial Class frmMain
         Controls.Add(lblLibraryType)
         Controls.Add(dgvEventLibraries)
         Controls.Add(MenuStrip1)
-        Font = New Font("Segoe UI", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         MainMenuStrip = MenuStrip1
         MaximumSize = New Size(1495, 911)
@@ -365,7 +363,11 @@ Partial Class frmMain
     Friend WithEvents fctbScript As FastColoredTextBox
     Friend WithEvents chkSearchAll As CheckBox
     Friend WithEvents Panel1 As Panel
-
+    Friend WithEvents cmbClients As System.Windows.Forms.ComboBox
+    Friend WithEvents dgvEventLibraries As DataGridView
+    Friend WithEvents btnEventLibraries As System.Windows.Forms.Button
+    Friend WithEvents btnCustomLibraries As System.Windows.Forms.Button
+    Friend WithEvents dgvEventLibraryEvents As DataGridView
 
 
 End Class
