@@ -1,4 +1,4 @@
-﻿Imports Microsoft.Identity.Extensions
+﻿'Imports Microsoft.Identity.Extensions
 Imports FastColoredTextBoxNS
 
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
@@ -205,7 +205,7 @@ Partial Class frmMain
         ' 
         lblSearch.AutoSize = True
         lblSearch.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblSearch.Location = New Point(734, 17)
+        lblSearch.Location = New Point(734, 11)
         lblSearch.Name = "lblSearch"
         lblSearch.Size = New Size(56, 20)
         lblSearch.TabIndex = 15
@@ -213,7 +213,7 @@ Partial Class frmMain
         ' 
         ' txtSearch
         ' 
-        txtSearch.Location = New Point(796, 18)
+        txtSearch.Location = New Point(786, 10)
         txtSearch.Name = "txtSearch"
         txtSearch.Size = New Size(241, 23)
         txtSearch.TabIndex = 16
@@ -223,7 +223,7 @@ Partial Class frmMain
         btnSearch.Enabled = False
         btnSearch.FlatStyle = FlatStyle.System
         btnSearch.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnSearch.Location = New Point(1052, 14)
+        btnSearch.Location = New Point(806, 39)
         btnSearch.Name = "btnSearch"
         btnSearch.Size = New Size(53, 27)
         btnSearch.TabIndex = 17
@@ -235,7 +235,7 @@ Partial Class frmMain
         btnUndo.Enabled = False
         btnUndo.FlatStyle = FlatStyle.System
         btnUndo.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnUndo.Location = New Point(1052, 47)
+        btnUndo.Location = New Point(865, 39)
         btnUndo.Name = "btnUndo"
         btnUndo.Size = New Size(53, 27)
         btnUndo.TabIndex = 18
@@ -267,12 +267,12 @@ Partial Class frmMain
         fctbScript.ForeColor = SystemColors.ActiveCaptionText
         fctbScript.Hotkeys = resources.GetString("fctbScript.Hotkeys")
         fctbScript.IsReplaceMode = False
-        fctbScript.Location = New Point(277, 158)
+        fctbScript.Location = New Point(277, 117)
         fctbScript.Name = "fctbScript"
         fctbScript.Paddings = New Padding(0)
         fctbScript.SelectionColor = Color.FromArgb(CByte(60), CByte(0), CByte(0), CByte(255))
         fctbScript.ServiceColors = CType(resources.GetObject("fctbScript.ServiceColors"), ServiceColors)
-        fctbScript.Size = New Size(1190, 701)
+        fctbScript.Size = New Size(1190, 742)
         fctbScript.TabIndex = 6
         fctbScript.Visible = False
         fctbScript.Zoom = 100
@@ -280,9 +280,10 @@ Partial Class frmMain
         ' chkSearchAll
         ' 
         chkSearchAll.AutoSize = True
-        chkSearchAll.Location = New Point(796, 47)
+        chkSearchAll.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        chkSearchAll.Location = New Point(1033, 11)
         chkSearchAll.Name = "chkSearchAll"
-        chkSearchAll.Size = New Size(120, 19)
+        chkSearchAll.Size = New Size(147, 24)
         chkSearchAll.TabIndex = 20
         chkSearchAll.Text = "Search all Clients?"
         chkSearchAll.UseVisualStyleBackColor = True
@@ -301,16 +302,18 @@ Partial Class frmMain
         Panel1.Dock = DockStyle.Top
         Panel1.Location = New Point(0, 24)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(1479, 94)
+        Panel1.Size = New Size(1479, 87)
         Panel1.TabIndex = 21
         ' 
         ' cmbClients
         ' 
         cmbClients.DropDownStyle = ComboBoxStyle.DropDownList
+        cmbClients.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cmbClients.FormattingEnabled = True
+        cmbClients.ItemHeight = 20
         cmbClients.Location = New Point(16, 9)
         cmbClients.Name = "cmbClients"
-        cmbClients.Size = New Size(298, 23)
+        cmbClients.Size = New Size(298, 28)
         cmbClients.TabIndex = 21
         ' 
         ' frmMain
