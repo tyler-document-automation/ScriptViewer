@@ -57,7 +57,6 @@ Partial Class frmMain
         btnUndo = New System.Windows.Forms.Button()
         btnAPI = New System.Windows.Forms.Button()
         fctbScript = New FastColoredTextBox()
-        chkSearchAll = New CheckBox()
         Panel1 = New Panel()
         cmbClients = New System.Windows.Forms.ComboBox()
         CType(dgvEventLibraries, ComponentModel.ISupportInitialize).BeginInit()
@@ -277,21 +276,9 @@ Partial Class frmMain
         fctbScript.Visible = False
         fctbScript.Zoom = 100
         ' 
-        ' chkSearchAll
-        ' 
-        chkSearchAll.AutoSize = True
-        chkSearchAll.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        chkSearchAll.Location = New Point(1033, 11)
-        chkSearchAll.Name = "chkSearchAll"
-        chkSearchAll.Size = New Size(147, 24)
-        chkSearchAll.TabIndex = 20
-        chkSearchAll.Text = "Search all Clients?"
-        chkSearchAll.UseVisualStyleBackColor = True
-        ' 
         ' Panel1
         ' 
         Panel1.Controls.Add(cmbClients)
-        Panel1.Controls.Add(chkSearchAll)
         Panel1.Controls.Add(btnEventLibraries)
         Panel1.Controls.Add(btnCustomLibraries)
         Panel1.Controls.Add(lblScriptVersion)
@@ -332,8 +319,10 @@ Partial Class frmMain
         Controls.Add(dgvEventLibraries)
         Controls.Add(MenuStrip1)
         Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        FormBorderStyle = FormBorderStyle.FixedSingle
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         MainMenuStrip = MenuStrip1
+        MaximizeBox = False
         MaximumSize = New Size(1495, 911)
         Name = "frmMain"
         StartPosition = FormStartPosition.CenterScreen
@@ -364,7 +353,6 @@ Partial Class frmMain
     Friend WithEvents btnUndo As System.Windows.Forms.Button
     Friend WithEvents btnAPI As System.Windows.Forms.Button
     Friend WithEvents fctbScript As FastColoredTextBox
-    Friend WithEvents chkSearchAll As CheckBox
     Friend WithEvents Panel1 As Panel
     Friend WithEvents cmbClients As System.Windows.Forms.ComboBox
     Friend WithEvents dgvEventLibraries As DataGridView

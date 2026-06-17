@@ -13,6 +13,7 @@ Imports System.Drawing.Text
 
 Imports Newtonsoft.Json.Linq
 Imports System.Threading
+Imports System.Drawing.Drawing2D
 
 
 
@@ -71,13 +72,16 @@ Public Class frmMain
                     cmd.CommandType = CommandType.StoredProcedure
 
                     cmd.Parameters.AddWithValue("@querytype", 0)
+                    If Not String.IsNullOrWhiteSpace(txtSearch.Text) Then
+                        cmd.Parameters.AddWithValue("@searchstring", txtSearch.Text)
+                    End If
 
                     _connScriptViewer.Open()
                     'Dim reader As SqlDataReader = cmd.ExecuteReader()
 
-                    cmbClients.Items.Clear()
+                    'cmbClients.Items.Clear()
 
-                    cmbClients.Items.Add("--Select client...--")
+                    'cmbClients.Items.Add("--Select client...--")
 
                     Using da As New SqlDataAdapter(cmd)
                         da.Fill(dt)
@@ -107,27 +111,29 @@ Public Class frmMain
 
     Private Sub cmbClients_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cmbClients.SelectionChangeCommitted
 
-        dgvEventLibraries.Visible = False
+        'dgvEventLibraries.Visible = False
         dgvEventLibraryEvents.Visible = False
         fctbScript.Visible = False
         If cmbClients.SelectedIndex > 0 Then
             btnCustomLibraries.Enabled = True
             btnEventLibraries.Enabled = True
-            btnSearch.Enabled = True
-            btnUndo.Enabled = True
+            'btnSearch.Enabled = True
+            'btnUndo.Enabled = True
             GetScriptVersion()
         Else
             btnCustomLibraries.Enabled = False
             btnEventLibraries.Enabled = False
-            lblLibraryType.Visible = False
-            lblEventFunction.Visible = False
-            lblScriptVersion.Visible = False
-            btnSearch.Enabled = False
-            btnUndo.Enabled = False
+            'lblLibraryType.Visible = False
+            'lblEventFunction.Visible = False
+            'lblScriptVersion.Visible = False
+            'btnSearch.Enabled = False
+            'btnUndo.Enabled = False
         End If
 
-        lblLibraryType.Visible = False
-        lblEventFunction.Visible = False
+        'lblLibraryType.Visible = False
+        'lblEventFunction.Visible = False
+
+        FillEvents()
 
     End Sub
 
@@ -168,15 +174,14 @@ Public Class frmMain
     End Sub
 
     Private Sub btnEventLibraries_Click(sender As Object, e As EventArgs) Handles btnEventLibraries.Click
-        dgvEventLibraryEvents.Visible = False
-        fctbScript.Visible = False
-        librarytype = "event"
-        lblLibraryType.Visible = True
-        lblLibraryType.Text = "Event Libraries:"
-        lblEventFunction.Visible = False
+        'dgvEventLibraryEvents.Visible = False
+        'fctbScript.Visible = False
+        'librarytype = "event"
+        'lblLibraryType.Visible = True
+        'lblLibraryType.Text = "Event Libraries:"
+        'lblEventFunction.Visible = False
 
-        'Dim databasename = cmbClients.SelectedItem & "_intellidact"
-        Dim databasename = cmbClients.Text
+
 
         'Dim connectionString As String = ConfigurationManager.ConnectionStrings("ScriptViewer").ConnectionString
 
@@ -185,6 +190,63 @@ Public Class frmMain
             cmbClients.Focus()
             Exit Sub
         End If
+
+        ''Dim databasename = cmbClients.SelectedItem & "_intellidact"
+        'Dim databasename = cmbClients.Text
+
+        FillEvents()
+
+        'Using _connScriptViewer = New SqlConnection(connectionString)
+        '    Try
+
+        '        Using cmd As New SqlCommand("GetScripts", _connScriptViewer)
+        '            cmd.CommandType = CommandType.StoredProcedure
+
+        '            cmd.Parameters.AddWithValue("@database", databasename)
+        '            cmd.Parameters.AddWithValue("@eventorcustom", librarytype)
+        '            If Not String.IsNullOrWhiteSpace(txtSearch.Text) Then
+        '                cmd.Parameters.AddWithValue("@searchstring", txtSearch.Text)
+        '            End If
+        '            cmd.Parameters.AddWithValue("@querytype", 1)
+
+        '            Using adapter As New SqlDataAdapter(cmd)
+
+        '                Dim dt As New DataTable
+
+        '                _connScriptViewer.Open()
+
+        '                adapter.Fill(dt)
+
+        '                _connScriptViewer.Close()
+
+        '                dgvEventLibraries.DataSource = dt
+
+        '                dgvEventLibraries.ShowCellToolTips = True
+
+        '                dgvEventLibraries.Columns(1).Visible = False
+        '            End Using
+
+        '        End Using
+
+        '        dgvEventLibraries.Columns(0).Width = 200
+        '        dgvEventLibraries.Visible = True
+        '        dgvEventLibraries.ClearSelection()
+        '    Catch ex As Exception
+        '        MessageBox.Show("Error loading event libraries. " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        '    End Try
+        'End Using
+
+    End Sub
+
+    Private Sub FillEvents()
+        dgvEventLibraryEvents.Visible = False
+        fctbScript.Visible = False
+        librarytype = "event"
+        lblLibraryType.Visible = True
+        lblLibraryType.Text = "Event Libraries:"
+        lblEventFunction.Visible = False
+
+        Dim databasename = cmbClients.Text
 
         Using _connScriptViewer = New SqlConnection(connectionString)
             Try
@@ -220,12 +282,11 @@ Public Class frmMain
 
                 dgvEventLibraries.Columns(0).Width = 200
                 dgvEventLibraries.Visible = True
-                dgvEventLibraries.ClearSelection()
+                'dgvEventLibraries.ClearSelection()
             Catch ex As Exception
                 MessageBox.Show("Error loading event libraries. " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End Using
-
     End Sub
 
     Private Sub btnCustomLibraries_Click(sender As Object, e As EventArgs) Handles btnCustomLibraries.Click
@@ -448,14 +509,15 @@ Public Class frmMain
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         If String.IsNullOrWhiteSpace(txtSearch.Text) Then
             MsgBox("Please enter a search value")
-        ElseIf chkSearchAll.Checked = False Then
-            dgvEventLibraries.Visible = False
+        Else
+            'dgvEventLibraries.Visible = False
             dgvEventLibraryEvents.Visible = False
-            lblLibraryType.Visible = False
-            lblEventFunction.Visible = False
+            'lblLibraryType.Visible = False
+            'lblEventFunction.Visible = False
             fctbScript.Visible = False
-        ElseIf chkSearchAll.Checked = True Then
-            MsgBox("test", Title:="test")
+            LoadClientList()
+            FillEvents()
+
         End If
     End Sub
 
@@ -466,6 +528,8 @@ Public Class frmMain
         lblLibraryType.Visible = False
         lblEventFunction.Visible = False
         fctbScript.Visible = False
+        LoadClientList()
+
     End Sub
 
     Private Async Sub btnGetBatches_Click(sender As Object, e As EventArgs) Handles btnAPI.Click
