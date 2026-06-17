@@ -92,7 +92,7 @@ Partial Class frmMain
         btnEventLibraries.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnEventLibraries.Location = New Point(15, 42)
         btnEventLibraries.Name = "btnEventLibraries"
-        btnEventLibraries.Size = New Size(102, 36)
+        btnEventLibraries.Size = New Size(147, 36)
         btnEventLibraries.TabIndex = 2
         btnEventLibraries.Text = "Event Libraries"
         btnEventLibraries.UseVisualStyleBackColor = True
@@ -102,7 +102,7 @@ Partial Class frmMain
         btnCustomLibraries.Enabled = False
         btnCustomLibraries.FlatStyle = FlatStyle.System
         btnCustomLibraries.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnCustomLibraries.Location = New Point(123, 42)
+        btnCustomLibraries.Location = New Point(168, 42)
         btnCustomLibraries.Name = "btnCustomLibraries"
         btnCustomLibraries.Size = New Size(133, 36)
         btnCustomLibraries.TabIndex = 3
@@ -219,7 +219,6 @@ Partial Class frmMain
         ' 
         ' btnSearch
         ' 
-        btnSearch.Enabled = False
         btnSearch.FlatStyle = FlatStyle.System
         btnSearch.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnSearch.Location = New Point(806, 39)
@@ -231,7 +230,6 @@ Partial Class frmMain
         ' 
         ' btnUndo
         ' 
-        btnUndo.Enabled = False
         btnUndo.FlatStyle = FlatStyle.System
         btnUndo.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnUndo.Location = New Point(865, 39)
