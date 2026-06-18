@@ -58,6 +58,8 @@ Partial Class frmMain
         btnAPI = New System.Windows.Forms.Button()
         fctbScript = New FastColoredTextBox()
         Panel1 = New Panel()
+        rdoCustom = New RadioButton()
+        rdoEvent = New RadioButton()
         cmbClients = New System.Windows.Forms.ComboBox()
         CType(dgvEventLibraries, ComponentModel.ISupportInitialize).BeginInit()
         CType(dgvEventLibraryEvents, ComponentModel.ISupportInitialize).BeginInit()
@@ -276,6 +278,8 @@ Partial Class frmMain
         ' 
         ' Panel1
         ' 
+        Panel1.Controls.Add(rdoCustom)
+        Panel1.Controls.Add(rdoEvent)
         Panel1.Controls.Add(cmbClients)
         Panel1.Controls.Add(btnEventLibraries)
         Panel1.Controls.Add(btnCustomLibraries)
@@ -289,6 +293,30 @@ Partial Class frmMain
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(1479, 87)
         Panel1.TabIndex = 21
+        ' 
+        ' rdoCustom
+        ' 
+        rdoCustom.Appearance = Appearance.Button
+        rdoCustom.AutoSize = True
+        rdoCustom.Location = New Point(514, 53)
+        rdoCustom.Name = "rdoCustom"
+        rdoCustom.Size = New Size(106, 25)
+        rdoCustom.TabIndex = 23
+        rdoCustom.TabStop = True
+        rdoCustom.Text = "Custom Libraries"
+        rdoCustom.UseVisualStyleBackColor = True
+        ' 
+        ' rdoEvent
+        ' 
+        rdoEvent.Appearance = Appearance.Button
+        rdoEvent.AutoSize = True
+        rdoEvent.Location = New Point(402, 52)
+        rdoEvent.Name = "rdoEvent"
+        rdoEvent.Size = New Size(93, 25)
+        rdoEvent.TabIndex = 22
+        rdoEvent.TabStop = True
+        rdoEvent.Text = "Event Libraries"
+        rdoEvent.UseVisualStyleBackColor = True
         ' 
         ' cmbClients
         ' 
@@ -357,6 +385,8 @@ Partial Class frmMain
     Friend WithEvents btnEventLibraries As System.Windows.Forms.Button
     Friend WithEvents btnCustomLibraries As System.Windows.Forms.Button
     Friend WithEvents dgvEventLibraryEvents As DataGridView
+    Friend WithEvents rdoCustom As RadioButton
+    Friend WithEvents rdoEvent As RadioButton
 
 
 End Class
