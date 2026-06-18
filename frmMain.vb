@@ -575,5 +575,11 @@ Public Class frmMain
 
     End Function
 
+    Private Sub rdoEvent_CheckedChanged(sender As Object, e As EventArgs) Handles rdoEvent.CheckedChanged
 
+    End Sub
+
+    Private Sub rdoCustom_CheckedChanged(sender As Object, e As EventArgs) Handles rdoCustom.CheckedChanged
+
+    End Sub
 End Class
