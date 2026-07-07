@@ -7,8 +7,5 @@
     <Compile Update="frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="frmVersionReport.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 </Project>
