@@ -34,9 +34,12 @@ Partial Class frmVersionReport
         dgvVersionReport.AllowUserToResizeColumns = False
         dgvVersionReport.AllowUserToResizeRows = False
         dgvVersionReport.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        dgvVersionReport.GridColor = SystemColors.InactiveCaption
         dgvVersionReport.Location = New Point(13, 12)
         dgvVersionReport.Name = "dgvVersionReport"
-        dgvVersionReport.Size = New Size(400, 678)
+        dgvVersionReport.ReadOnly = True
+        dgvVersionReport.RowHeadersVisible = False
+        dgvVersionReport.Size = New Size(370, 678)
         dgvVersionReport.TabIndex = 0
         ' 
         ' frmVersionReport
@@ -44,7 +47,7 @@ Partial Class frmVersionReport
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
-        ClientSize = New Size(425, 704)
+        ClientSize = New Size(395, 704)
         Controls.Add(dgvVersionReport)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         MaximizeBox = False
