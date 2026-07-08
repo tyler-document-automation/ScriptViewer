@@ -8,7 +8,7 @@
     <MyType>WindowsForms</MyType>
     <ImportedNamespaces>System.Configuration=False,System.Data=False,System.Drawing=False,System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,ScriptViewer=True</ImportedNamespaces>
     <ApplicationIcon>ScriptView.ico</ApplicationIcon>
-    <AssemblyVersion>2.0.0.9</AssemblyVersion>
+    <AssemblyVersion>2.0.0.13</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
 

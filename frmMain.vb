@@ -63,6 +63,8 @@ Public Class frmMain
 
     Private Sub LoadClientList()
 
+        Dim currentClient As String = cmbClients.Text
+
         Dim dt As New DataTable()
 
         Using _connScriptViewer = New SqlConnection(connectionString)
@@ -76,12 +78,7 @@ Public Class frmMain
                         cmd.Parameters.AddWithValue("@searchstring", txtSearch.Text)
                     End If
 
-                    _connScriptViewer.Open()
-                    'Dim reader As SqlDataReader = cmd.ExecuteReader()
-
-                    'cmbClients.Items.Clear()
-
-                    'cmbClients.Items.Add("--Select client...--")
+                    ' _connScriptViewer.Open()
 
                     Using da As New SqlDataAdapter(cmd)
                         da.Fill(dt)
@@ -95,7 +92,15 @@ Public Class frmMain
                     cmbClients.DataSource = dt
                     cmbClients.DisplayMember = "ClientName"
 
-                    cmbClients.SelectedIndex = 0
+                    Dim foundIndex As Integer = cmbClients.FindStringExact(currentClient)
+
+                    If foundIndex >= 0 Then
+                        cmbClients.SelectedIndex = foundIndex
+                    Else
+                        cmbClients.SelectedIndex = 0
+                    End If
+
+                    'cmbClients.SelectedIndex = 0
 
                 End Using
 
