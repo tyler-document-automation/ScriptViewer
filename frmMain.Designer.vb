@@ -305,6 +305,7 @@ Partial Class frmMain
         rdoCustom.TabStop = True
         rdoCustom.Text = "Custom Libraries"
         rdoCustom.UseVisualStyleBackColor = True
+        rdoCustom.Visible = False
         ' 
         ' rdoEvent
         ' 
@@ -317,6 +318,7 @@ Partial Class frmMain
         rdoEvent.TabStop = True
         rdoEvent.Text = "Event Libraries"
         rdoEvent.UseVisualStyleBackColor = True
+        rdoEvent.Visible = False
         ' 
         ' cmbClients
         ' 
