@@ -587,4 +587,11 @@ Public Class frmMain
     Private Sub rdoCustom_CheckedChanged(sender As Object, e As EventArgs) Handles rdoCustom.CheckedChanged
 
     End Sub
+
+    Private Sub btnCloudSites_Click(sender As Object, e As EventArgs) Handles btnCloudSites.Click
+
+        Using frm As New frmCloudSites()
+            frm.ShowDialog()
+        End Using
+    End Sub
 End Class

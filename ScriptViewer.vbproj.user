@@ -4,6 +4,9 @@
     <_LastSelectedProfileId>C:\VisualStudioProjects\ScriptViewer\My Project\PublishProfiles\ClickOnceProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="frmCloudSites.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmMain.vb">
       <SubType>Form</SubType>
     </Compile>

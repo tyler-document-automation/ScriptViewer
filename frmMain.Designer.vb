@@ -58,6 +58,7 @@ Partial Class frmMain
         btnAPI = New System.Windows.Forms.Button()
         fctbScript = New FastColoredTextBox()
         Panel1 = New Panel()
+        btnCloudSites = New System.Windows.Forms.Button()
         rdoCustom = New RadioButton()
         rdoEvent = New RadioButton()
         cmbClients = New System.Windows.Forms.ComboBox()
@@ -214,9 +215,10 @@ Partial Class frmMain
         ' 
         ' txtSearch
         ' 
-        txtSearch.Location = New Point(786, 10)
+        txtSearch.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        txtSearch.Location = New Point(796, 9)
         txtSearch.Name = "txtSearch"
-        txtSearch.Size = New Size(241, 23)
+        txtSearch.Size = New Size(241, 27)
         txtSearch.TabIndex = 16
         ' 
         ' btnSearch
@@ -278,6 +280,7 @@ Partial Class frmMain
         ' 
         ' Panel1
         ' 
+        Panel1.Controls.Add(btnCloudSites)
         Panel1.Controls.Add(rdoCustom)
         Panel1.Controls.Add(rdoEvent)
         Panel1.Controls.Add(cmbClients)
@@ -293,6 +296,16 @@ Partial Class frmMain
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(1479, 87)
         Panel1.TabIndex = 21
+        ' 
+        ' btnCloudSites
+        ' 
+        btnCloudSites.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnCloudSites.Location = New Point(1217, 11)
+        btnCloudSites.Name = "btnCloudSites"
+        btnCloudSites.Size = New Size(119, 37)
+        btnCloudSites.TabIndex = 24
+        btnCloudSites.Text = "Cloud Sites"
+        btnCloudSites.UseVisualStyleBackColor = True
         ' 
         ' rdoCustom
         ' 
@@ -389,6 +402,7 @@ Partial Class frmMain
     Friend WithEvents dgvEventLibraryEvents As DataGridView
     Friend WithEvents rdoCustom As RadioButton
     Friend WithEvents rdoEvent As RadioButton
+    Friend WithEvents btnCloudSites As System.Windows.Forms.Button
 
 
 End Class
