@@ -18,7 +18,7 @@ Public Class frmCloudSites
         tlpCloudSites.RowCount = 1
 
         tlpCloudSites.ColumnStyles.Clear()
-        tlpCloudSites.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100))
+        tlpCloudSites.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 1000))
         tlpCloudSites.ColumnStyles.Add(New ColumnStyle(SizeType.AutoSize))
         tlpCloudSites.ColumnStyles.Add(New ColumnStyle(SizeType.AutoSize))
         tlpCloudSites.ColumnStyles.Add(New ColumnStyle(SizeType.AutoSize))
@@ -119,10 +119,13 @@ Public Class frmCloudSites
             CreateSiteButton("Scripting", baseUrl, "scripting/")
 
 
-        btnAdmin.BackColor = Color.White
-        btnWorkflow.BackColor = Color.White
-        btnExtraction.BackColor = Color.White
-        btnScripting.BackColor = Color.White
+        Dim rowColor As Color
+
+        If rowIndex Mod 2 = 0 Then
+            rowColor = Color.White
+        Else
+            rowColor = Color.Black
+        End If
 
         tlpCloudSites.Controls.Add(lblClient, 0, rowIndex)
         tlpCloudSites.Controls.Add(btnAdmin, 1, rowIndex)

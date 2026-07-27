@@ -45,7 +45,7 @@ Partial Class frmCloudSites
         tlpCloudSites.RowCount = 2
         tlpCloudSites.RowStyles.Add(New RowStyle())
         tlpCloudSites.RowStyles.Add(New RowStyle())
-        tlpCloudSites.Size = New Size(470, 0)
+        tlpCloudSites.Size = New Size(547, 0)
         tlpCloudSites.TabIndex = 0
         ' 
         ' pnlSites
@@ -56,7 +56,7 @@ Partial Class frmCloudSites
         pnlSites.Dock = DockStyle.Fill
         pnlSites.Location = New Point(0, 0)
         pnlSites.Name = "pnlSites"
-        pnlSites.Size = New Size(470, 450)
+        pnlSites.Size = New Size(547, 450)
         pnlSites.TabIndex = 1
         ' 
         ' frmCloudSites
@@ -64,10 +64,11 @@ Partial Class frmCloudSites
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
-        ClientSize = New Size(470, 450)
+        ClientSize = New Size(547, 450)
         Controls.Add(pnlSites)
         FormBorderStyle = FormBorderStyle.Fixed3D
         MaximizeBox = False
+        MinimizeBox = False
         Name = "frmCloudSites"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Cloud Sites"
