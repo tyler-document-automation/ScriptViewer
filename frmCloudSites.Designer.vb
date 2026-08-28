@@ -22,6 +22,7 @@ Partial Class frmCloudSites
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCloudSites))
         tlpCloudSites = New TableLayoutPanel()
         pnlSites = New Panel()
         pnlSites.SuspendLayout()
@@ -67,6 +68,7 @@ Partial Class frmCloudSites
         ClientSize = New Size(547, 450)
         Controls.Add(pnlSites)
         FormBorderStyle = FormBorderStyle.Fixed3D
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
         MaximizeBox = False
         MinimizeBox = False
         Name = "frmCloudSites"

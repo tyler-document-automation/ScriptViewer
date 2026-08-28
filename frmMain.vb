@@ -503,13 +503,7 @@ Public Class frmMain
     'Friend WithEvents btnCustomLibraries As System.Windows.Forms.Button
     'Friend WithEvents dgvEventLibraryEvents As DataGridView
 
-    Private Sub tsVersionByClient_Click(sender As Object, e As EventArgs) Handles tsVersionByClient.Click
-        frmVersionReport.ShowDialog()
-    End Sub
 
-    Private Sub tsAbout_Click(sender As Object, e As EventArgs) Handles tsAbout.Click
-        MsgBox(Assembly.GetExecutingAssembly().GetName().Version.ToString, Title:="ScriptViewer Version")
-    End Sub
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         If String.IsNullOrWhiteSpace(txtSearch.Text) Then
@@ -580,18 +574,29 @@ Public Class frmMain
 
     End Function
 
-    Private Sub rdoEvent_CheckedChanged(sender As Object, e As EventArgs) Handles rdoEvent.CheckedChanged
-
-    End Sub
-
-    Private Sub rdoCustom_CheckedChanged(sender As Object, e As EventArgs) Handles rdoCustom.CheckedChanged
-
-    End Sub
-
     Private Sub btnCloudSites_Click(sender As Object, e As EventArgs) Handles btnCloudSites.Click
 
         Using frm As New frmCloudSites()
             frm.ShowDialog()
         End Using
+    End Sub
+    Private Sub tsVersionByClient_Click(sender As Object, e As EventArgs) Handles tsVersionByClient.Click
+        frmVersionReport.ShowDialog()
+    End Sub
+
+    Private Sub tsAbout_Click(sender As Object, e As EventArgs) Handles tsAbout.Click
+        MsgBox(Assembly.GetExecutingAssembly().GetName().Version.ToString, Title:="ScriptViewer Version")
+    End Sub
+
+    Private Sub mnuImport_Click(sender As Object, e As EventArgs) Handles mnuImport.Click
+        'Dim userinput As String = InputBox("Enter admin password:")
+
+        'If String.IsNullOrWhiteSpace(userinput) Or userinput <> "tyler" Then
+        '    MessageBox.Show("Invalid Entry")
+        '    Return
+        'End If
+
+
+        frmImport.ShowDialog()
     End Sub
 End Class

@@ -47,6 +47,8 @@ Partial Class frmMain
         lblEventFunction = New Label()
         lblScriptVersion = New Label()
         MenuStrip1 = New MenuStrip()
+        FileToolStripMenuItem = New ToolStripMenuItem()
+        mnuImport = New ToolStripMenuItem()
         ReportsToolStripMenuItem = New ToolStripMenuItem()
         tsVersionByClient = New ToolStripMenuItem()
         tsMenu = New ToolStripMenuItem()
@@ -170,12 +172,25 @@ Partial Class frmMain
         ' 
         ' MenuStrip1
         ' 
-        MenuStrip1.Items.AddRange(New ToolStripItem() {ReportsToolStripMenuItem, tsMenu})
+        MenuStrip1.Items.AddRange(New ToolStripItem() {FileToolStripMenuItem, ReportsToolStripMenuItem, tsMenu})
         MenuStrip1.Location = New Point(0, 0)
         MenuStrip1.Name = "MenuStrip1"
         MenuStrip1.Size = New Size(1479, 24)
         MenuStrip1.TabIndex = 13
         MenuStrip1.Text = "MenuStrip1"
+        ' 
+        ' FileToolStripMenuItem
+        ' 
+        FileToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {mnuImport})
+        FileToolStripMenuItem.Name = "FileToolStripMenuItem"
+        FileToolStripMenuItem.Size = New Size(37, 20)
+        FileToolStripMenuItem.Text = "File"
+        ' 
+        ' mnuImport
+        ' 
+        mnuImport.Name = "mnuImport"
+        mnuImport.Size = New Size(110, 22)
+        mnuImport.Text = "Import"
         ' 
         ' ReportsToolStripMenuItem
         ' 
@@ -311,7 +326,7 @@ Partial Class frmMain
         ' 
         rdoCustom.Appearance = Appearance.Button
         rdoCustom.AutoSize = True
-        rdoCustom.Location = New Point(514, 53)
+        rdoCustom.Location = New Point(501, 52)
         rdoCustom.Name = "rdoCustom"
         rdoCustom.Size = New Size(106, 25)
         rdoCustom.TabIndex = 23
@@ -403,6 +418,8 @@ Partial Class frmMain
     Friend WithEvents rdoCustom As RadioButton
     Friend WithEvents rdoEvent As RadioButton
     Friend WithEvents btnCloudSites As System.Windows.Forms.Button
+    Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents mnuImport As ToolStripMenuItem
 
 
 End Class
