@@ -6,6 +6,7 @@ Imports System.IO
 
 Public Class frmImport
     Public Shared connectionString
+
     Private Sub btnBrowse_Click(sender As Object, e As EventArgs) Handles btnBrowse.Click
         Using folderDialog As New FolderBrowserDialog()
 
@@ -31,27 +32,87 @@ Public Class frmImport
         txtOutput.Clear()
 
         Try
+
             Dim tempFolder As String = String.Empty
-            CopyFiles(folderPath, tempFolder)
-            ImportData(client, tempFolder)
-
-
-
+            If Not FileCheck(folderPath) Then
+                AddOutput("File check failed. Process halted.")
+            Else
+                CopyFiles(folderPath, tempFolder)
+                'ImportData(client, tempFolder)
+            End If
 
         Catch ex As Exception
-            txtOutput.Text =
-            "The import failed:" &
-            Environment.NewLine &
-            ex.Message
+            txtOutput.Text = "The import failed:" & Environment.NewLine & ex.Message
         End Try
 
     End Sub
 
+    Private Function FileCheck(folderPath As String) As Boolean
 
+        If String.IsNullOrWhiteSpace(folderPath) OrElse Not Directory.Exists(folderPath) Then
+            AddOutput("The selected folder does not exist.")
+            Return False
+        End If
+
+        If rdoNonCloud.Checked Then
+
+            'NonCloud validation checks go here.
+            Dim jsonFiles As String() = Directory.GetFiles(folderPath, "*.json", SearchOption.TopDirectoryOnly)
+
+            If jsonFiles.Length <> 3 Then
+                AddOutput("File check failed: The source folder must contain exactly three JSON files.")
+                Return False
+            End If
+
+            Dim hasCustomLibraries As Boolean = Array.Exists(jsonFiles, Function(filePath) Path.GetFileName(filePath).StartsWith("custom_libraries", StringComparison.OrdinalIgnoreCase))
+            Dim hasEventLibraries As Boolean = Array.Exists(jsonFiles, Function(filePath) Path.GetFileName(filePath).StartsWith("event_libraries", StringComparison.OrdinalIgnoreCase))
+            Dim hasRelease As Boolean = Array.Exists(jsonFiles, Function(filePath) String.Equals(Path.GetFileName(filePath), "release.json", StringComparison.OrdinalIgnoreCase))
+
+            If Not hasCustomLibraries Then
+                AddOutput("File check failed: A JSON file starting with 'custom_libraries' was not found.")
+                Return False
+            End If
+
+            If Not hasEventLibraries Then
+                AddOutput("File check failed: A JSON file starting with 'event_libraries' was not found.")
+                Return False
+            End If
+
+            If Not hasRelease Then
+                AddOutput("File check failed: release.json was not found.")
+                Return False
+            End If
+
+            AddOutput("Non-cloud file check passed.")
+
+
+        Else 'Cloud validation checks go here.
+
+            Dim files As String() = Directory.GetFiles(folderPath, "*", SearchOption.TopDirectoryOnly)
+            Dim jsonFiles As String() = Array.FindAll(files, Function(filePath) String.Equals(Path.GetExtension(filePath), ".json", StringComparison.OrdinalIgnoreCase))
+
+            If jsonFiles.Length = 0 Then
+                AddOutput("File check failed: The source folder does not contain a JSON file.")
+                Return False
+            End If
+
+            If jsonFiles.Length > 1 Then
+                AddOutput("File check failed: The source folder contains more than one JSON file.")
+                Return False
+            End If
+
+            AddOutput("Cloud file check passed: " & Path.GetFileName(jsonFiles(0)))
+
+        End If
+
+        'All checks passed.
+        Return True
+
+    End Function
 
     Private Sub CopyFiles(sourceFolder As String, ByRef tempFolder As String)
 
-        Dim destinationRoot As String = "\\dbksvcsifsvai\Development\BrianV\ScriptViewer\ImportFiles"
+        Dim destinationRoot As String = "\\dbksvcsifsvai\CustomerImages\ScriptViewer\ImportFiles\"
 
         Dim timestamp As String = DateTime.Now.ToString("yyyyMMdd_HHmmss_fff")
 
@@ -131,5 +192,6 @@ Public Class frmImport
         txtOutput.ScrollToCaret()
         txtOutput.Refresh()
     End Sub
+
 
 End Class

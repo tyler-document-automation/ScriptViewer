@@ -23,8 +23,8 @@ Partial Class frmImport
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmImport))
-        RadioButton1 = New RadioButton()
-        RadioButton2 = New RadioButton()
+        rdoNonCloud = New RadioButton()
+        rdoCloud = New RadioButton()
         txtFolderPath = New TextBox()
         Label1 = New Label()
         btnBrowse = New Button()
@@ -34,31 +34,31 @@ Partial Class frmImport
         txtOutput = New TextBox()
         SuspendLayout()
         ' 
-        ' RadioButton1
+        ' rdoNonCloud
         ' 
-        RadioButton1.Appearance = Appearance.Button
-        RadioButton1.AutoSize = True
-        RadioButton1.Font = New Font("Segoe UI", 11.25F)
-        RadioButton1.Location = New Point(12, 26)
-        RadioButton1.Name = "RadioButton1"
-        RadioButton1.Size = New Size(92, 30)
-        RadioButton1.TabIndex = 5
-        RadioButton1.TabStop = True
-        RadioButton1.Text = "Non-Cloud"
-        RadioButton1.UseVisualStyleBackColor = True
+        rdoNonCloud.Appearance = Appearance.Button
+        rdoNonCloud.AutoSize = True
+        rdoNonCloud.Font = New Font("Segoe UI", 11.25F)
+        rdoNonCloud.Location = New Point(12, 26)
+        rdoNonCloud.Name = "rdoNonCloud"
+        rdoNonCloud.Size = New Size(92, 30)
+        rdoNonCloud.TabIndex = 5
+        rdoNonCloud.TabStop = True
+        rdoNonCloud.Text = "Non-Cloud"
+        rdoNonCloud.UseVisualStyleBackColor = True
         ' 
-        ' RadioButton2
+        ' rdoCloud
         ' 
-        RadioButton2.Appearance = Appearance.Button
-        RadioButton2.AutoSize = True
-        RadioButton2.Font = New Font("Segoe UI", 11.25F)
-        RadioButton2.Location = New Point(121, 26)
-        RadioButton2.Name = "RadioButton2"
-        RadioButton2.Size = New Size(58, 30)
-        RadioButton2.TabIndex = 6
-        RadioButton2.TabStop = True
-        RadioButton2.Text = "Cloud"
-        RadioButton2.UseVisualStyleBackColor = True
+        rdoCloud.Appearance = Appearance.Button
+        rdoCloud.AutoSize = True
+        rdoCloud.Font = New Font("Segoe UI", 11.25F)
+        rdoCloud.Location = New Point(121, 26)
+        rdoCloud.Name = "rdoCloud"
+        rdoCloud.Size = New Size(58, 30)
+        rdoCloud.TabIndex = 6
+        rdoCloud.TabStop = True
+        rdoCloud.Text = "Cloud"
+        rdoCloud.UseVisualStyleBackColor = True
         ' 
         ' txtFolderPath
         ' 
@@ -140,8 +140,8 @@ Partial Class frmImport
         Controls.Add(btnBrowse)
         Controls.Add(Label1)
         Controls.Add(txtFolderPath)
-        Controls.Add(RadioButton2)
-        Controls.Add(RadioButton1)
+        Controls.Add(rdoCloud)
+        Controls.Add(rdoNonCloud)
         FormBorderStyle = FormBorderStyle.Fixed3D
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         MaximizeBox = False
@@ -152,8 +152,8 @@ Partial Class frmImport
         ResumeLayout(False)
         PerformLayout()
     End Sub
-    Friend WithEvents RadioButton1 As RadioButton
-    Friend WithEvents RadioButton2 As RadioButton
+    Friend WithEvents rdoNonCloud As RadioButton
+    Friend WithEvents rdoCloud As RadioButton
     Friend WithEvents txtFolderPath As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents btnBrowse As Button
