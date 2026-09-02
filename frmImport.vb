@@ -38,11 +38,11 @@ Public Class frmImport
                 AddOutput("File check failed. Process halted.")
             Else
                 CopyFiles(folderPath, tempFolder)
-                'ImportData(client, tempFolder)
+                ImportData(client, tempFolder)
             End If
 
         Catch ex As Exception
-            txtOutput.Text = "The import failed:" & Environment.NewLine & ex.Message
+            AddOutput("The import failed:" & Environment.NewLine & ex.Message)
         End Try
 
     End Sub
@@ -124,14 +124,9 @@ Public Class frmImport
         AddOutput("Copying files to " & tempFolder & "...")
 
         'Copy only the files directly inside the selected folder.
-        For Each sourceFile As String In Directory.GetFiles(sourceFolder)
-
-            Dim fileName As String = Path.GetFileName(sourceFile)
-
-            Dim destinationFile As String = Path.Combine(tempFolder, fileName)
-
+        For Each sourceFile As String In Directory.GetFiles(sourceFolder, "*.json", SearchOption.TopDirectoryOnly)
+            Dim destinationFile As String = Path.Combine(tempFolder, Path.GetFileName(sourceFile))
             File.Copy(sourceFile, destinationFile, overwrite:=True)
-
         Next
 
         AddOutput("Files copied successfully.")
@@ -141,7 +136,6 @@ Public Class frmImport
     Private Sub ImportData(client As String, folderpath As String)
 
         connectionString = ConfigurationManager.ConnectionStrings("ScriptViewerProd").ConnectionString
-
 
         AddOutput("Import running...")
 
@@ -154,26 +148,29 @@ Public Class frmImport
                 procedureOutput.AppendLine(infoArgs.Message)
             End Sub
 
-            Using command As New SqlCommand("ImportDataNew", connection)
+            If rdoCloud.Checked Then
+                Dim jsonFiles As String() = Directory.GetFiles(folderpath, "*.json", SearchOption.TopDirectoryOnly)
 
-                command.CommandType = CommandType.StoredProcedure
+                If jsonFiles.Length <> 1 Then
+                    AddOutput("Import failed: Exactly one JSON file is required.")
+                    Return
+                End If
 
-                command.Parameters.Add(
-                "@ClientName",
-                SqlDbType.VarChar,
-                255
-            ).Value = client
+                Dim jsonContent As String = File.ReadAllText(jsonFiles(0))
 
-                command.Parameters.Add(
-                "@FilePath",
-                SqlDbType.VarChar,
-                200
-            ).Value = folderpath
+                Using command As New SqlCommand("ImportDataNewTest", connection)
+                    command.CommandType = CommandType.StoredProcedure
+                    command.Parameters.Add("@ClientName", SqlDbType.NVarChar, 255).Value = client
+                    command.Parameters.Add("@JsonData", SqlDbType.NVarChar, -1).Value = jsonContent
 
-                connection.Open()
-                command.ExecuteNonQuery()
+                    connection.Open()
+                    command.ExecuteNonQuery()
+                End Using
+            Else
+                'rdoNonCloud is checked, do something else
+            End If
 
-            End Using
+
         End Using
 
         If procedureOutput.Length > 0 Then
