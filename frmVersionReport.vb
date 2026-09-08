@@ -5,9 +5,7 @@ Public Class frmVersionReport
 
     Private Sub frmVersionReport_Load(sender As Object, e As EventArgs) Handles Me.Load
 
-        'Dim connectionString As String = ConfigurationManager.ConnectionStrings("ScriptViewer").ConnectionString
-
-        Using _connScriptViewer = New SqlConnection(frmMain.connectionString)
+        Using _connScriptViewer As New SqlConnection(DatabaseConfig.ConnectionString)
             Try
                 Using cmd As New SqlCommand("GetScripts", _connScriptViewer)
                     cmd.CommandType = CommandType.StoredProcedure

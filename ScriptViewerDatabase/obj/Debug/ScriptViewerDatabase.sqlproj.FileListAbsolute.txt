@@ -1,0 +1,8 @@
+C:\VisualStudioProjects\ScriptViewer\ScriptViewerDatabase\bin\Debug\ScriptViewerDatabase.dacpac
+C:\VisualStudioProjects\ScriptViewer\ScriptViewerDatabase\obj\Debug\ScriptViewerDatabase.sqlproj.AssemblyReference.cache
+C:\VisualStudioProjects\ScriptViewer\ScriptViewerDatabase\obj\Debug\Model.xml
+C:\VisualStudioProjects\ScriptViewer\ScriptViewerDatabase\obj\Debug\refactor.xml
+C:\VisualStudioProjects\ScriptViewer\ScriptViewerDatabase\obj\Debug\postdeploy.sql
+C:\VisualStudioProjects\ScriptViewer\ScriptViewerDatabase\obj\Debug\predeploy.sql
+C:\VisualStudioProjects\ScriptViewer\ScriptViewerDatabase\obj\Debug\ScriptViewerDatabase.dll
+C:\VisualStudioProjects\ScriptViewer\ScriptViewerDatabase\obj\Debug\ScriptViewerDatabase.pdb

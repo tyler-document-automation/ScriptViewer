@@ -21,7 +21,7 @@ Public Class frmMain
     'Public Shared _connIntellidact As SqlConnection
     Public Shared _connScriptViewer As SqlConnection
     Public Shared librarytype As String
-    Public Shared connectionString
+    'Public Shared connectionString
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
@@ -38,24 +38,16 @@ Public Class frmMain
     End Sub
 
     Private Sub CreateConnection()
-#If DEBUG Then
-        connectionString = ConfigurationManager.ConnectionStrings("ScriptViewerTest").ConnectionString
-#ElseIf RELEASE Then
-        connectionString = ConfigurationManager.ConnectionStrings("ScriptViewerProd").ConnectionString
-#End If
+        '#If DEBUG Then
+        '        connectionString = ConfigurationManager.ConnectionStrings("ScriptViewerTest").ConnectionString
+        '#ElseIf RELEASE Then
+        '        connectionString = ConfigurationManager.ConnectionStrings("ScriptViewerProd").ConnectionString
+        '#End If
 
 
 
-        Dim environment As String = ConfigurationManager.AppSettings("Environment")
-        'Dim connectionString As String
+        '  Dim environment As String = ConfigurationManager.AppSettings("Environment")
 
-        'If environment = "test" Then
-        '    connectionString = ConfigurationManager.ConnectionStrings("ScriptViewerTest").ConnectionString
-        '    '_connScriptViewer = New SqlConnection(connectionString)
-        'ElseIf environment = "prod" Then
-        '    connectionString = ConfigurationManager.ConnectionStrings("ScriptViewerProd").ConnectionString
-        '    '_connScriptViewer = New SqlConnection(connectionString)
-        'End If
 
 
 
@@ -67,7 +59,8 @@ Public Class frmMain
 
         Dim dt As New DataTable()
 
-        Using _connScriptViewer = New SqlConnection(connectionString)
+        'Using _connScriptViewer = New SqlConnection(connectionString)
+        Using _connScriptViewer As New SqlConnection(DatabaseConfig.ConnectionString)
             Try
 
                 Using cmd As New SqlCommand("GetScripts", _connScriptViewer)
@@ -149,7 +142,7 @@ Public Class frmMain
         Dim databasename = cmbClients.Text
         'Dim connectionString As String = ConfigurationManager.ConnectionStrings("ScriptViewer").ConnectionString
 
-        Using _connScriptViewer = New SqlConnection(connectionString)
+        Using _connScriptViewer As New SqlConnection(DatabaseConfig.ConnectionString)
             Try
                 Using cmd As New SqlCommand("GetScripts", _connScriptViewer)
                     cmd.CommandType = CommandType.StoredProcedure
@@ -253,7 +246,7 @@ Public Class frmMain
 
         Dim databasename = cmbClients.Text
 
-        Using _connScriptViewer = New SqlConnection(connectionString)
+        Using _connScriptViewer As New SqlConnection(DatabaseConfig.ConnectionString)
             Try
 
                 Using cmd As New SqlCommand("GetScripts", _connScriptViewer)
@@ -314,7 +307,7 @@ Public Class frmMain
             Exit Sub
         End If
 
-        Using _connScriptViewer = New SqlConnection(connectionString)
+        Using _connScriptViewer As New SqlConnection(DatabaseConfig.ConnectionString)
             Try
                 Using cmd As New SqlCommand("GetScripts", _connScriptViewer)
                     cmd.CommandType = CommandType.StoredProcedure
@@ -360,7 +353,7 @@ Public Class frmMain
 
         'Dim connectionString As String = ConfigurationManager.ConnectionStrings("ScriptViewer").ConnectionString
 
-        Using _connScriptViewer = New SqlConnection(connectionString)
+        Using _connScriptViewer As New SqlConnection(DatabaseConfig.ConnectionString)
             Try
                 Using cmd As New SqlCommand("GetScripts", _connScriptViewer)
                     cmd.CommandType = CommandType.StoredProcedure
@@ -429,7 +422,7 @@ Public Class frmMain
 
         'Dim connectionString As String = ConfigurationManager.ConnectionStrings("ScriptViewer").ConnectionString
 
-        Using _connScriptViewer = New SqlConnection(connectionString)
+        Using _connScriptViewer As New SqlConnection(DatabaseConfig.ConnectionString)
             Try
 
 
