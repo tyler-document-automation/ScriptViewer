@@ -18,48 +18,24 @@ Imports System.Drawing.Drawing2D
 
 
 Public Class frmMain
-    'Public Shared _connIntellidact As SqlConnection
     Public Shared _connScriptViewer As SqlConnection
     Public Shared librarytype As String
-    'Public Shared connectionString
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
-
-
-            CreateConnection()
             LoadClientList()
-
-
         Catch ex As Exception
             MessageBox.Show("Database connection failed: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
 
-    Private Sub CreateConnection()
-        '#If DEBUG Then
-        '        connectionString = ConfigurationManager.ConnectionStrings("ScriptViewerTest").ConnectionString
-        '#ElseIf RELEASE Then
-        '        connectionString = ConfigurationManager.ConnectionStrings("ScriptViewerProd").ConnectionString
-        '#End If
-
-
-
-        '  Dim environment As String = ConfigurationManager.AppSettings("Environment")
-
-
-
-
-    End Sub
 
     Private Sub LoadClientList()
 
         Dim currentClient As String = cmbClients.Text
 
         Dim dt As New DataTable()
-
-        'Using _connScriptViewer = New SqlConnection(connectionString)
         Using _connScriptViewer As New SqlConnection(DatabaseConfig.ConnectionString)
             Try
 
@@ -70,8 +46,6 @@ Public Class frmMain
                     If Not String.IsNullOrWhiteSpace(txtSearch.Text) Then
                         cmd.Parameters.AddWithValue("@searchstring", txtSearch.Text)
                     End If
-
-                    ' _connScriptViewer.Open()
 
                     Using da As New SqlDataAdapter(cmd)
                         da.Fill(dt)
@@ -93,7 +67,6 @@ Public Class frmMain
                         cmbClients.SelectedIndex = 0
                     End If
 
-                    'cmbClients.SelectedIndex = 0
 
                 End Using
 
@@ -109,27 +82,17 @@ Public Class frmMain
 
     Private Sub cmbClients_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cmbClients.SelectionChangeCommitted
 
-        'dgvEventLibraries.Visible = False
+
         dgvEventLibraryEvents.Visible = False
         fctbScript.Visible = False
         If cmbClients.SelectedIndex > 0 Then
             btnCustomLibraries.Enabled = True
             btnEventLibraries.Enabled = True
-            'btnSearch.Enabled = True
-            'btnUndo.Enabled = True
             GetScriptVersion()
         Else
             btnCustomLibraries.Enabled = False
             btnEventLibraries.Enabled = False
-            'lblLibraryType.Visible = False
-            'lblEventFunction.Visible = False
-            'lblScriptVersion.Visible = False
-            'btnSearch.Enabled = False
-            'btnUndo.Enabled = False
         End If
-
-        'lblLibraryType.Visible = False
-        'lblEventFunction.Visible = False
 
         FillEvents()
 
@@ -138,9 +101,9 @@ Public Class frmMain
 
 
     Private Sub GetScriptVersion()
-        'Dim databasename = cmbClients.SelectedItem & "_intellidact"
+
         Dim databasename = cmbClients.Text
-        'Dim connectionString As String = ConfigurationManager.ConnectionStrings("ScriptViewer").ConnectionString
+
 
         Using _connScriptViewer As New SqlConnection(DatabaseConfig.ConnectionString)
             Try
@@ -172,16 +135,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnEventLibraries_Click(sender As Object, e As EventArgs) Handles btnEventLibraries.Click
-        'dgvEventLibraryEvents.Visible = False
-        'fctbScript.Visible = False
-        'librarytype = "event"
-        'lblLibraryType.Visible = True
-        'lblLibraryType.Text = "Event Libraries:"
-        'lblEventFunction.Visible = False
 
-
-
-        'Dim connectionString As String = ConfigurationManager.ConnectionStrings("ScriptViewer").ConnectionString
 
         If cmbClients.SelectedIndex = 0 Then
             MsgBox("Please select a valid client.", Title:="")
@@ -189,50 +143,8 @@ Public Class frmMain
             Exit Sub
         End If
 
-        ''Dim databasename = cmbClients.SelectedItem & "_intellidact"
-        'Dim databasename = cmbClients.Text
 
         FillEvents()
-
-        'Using _connScriptViewer = New SqlConnection(connectionString)
-        '    Try
-
-        '        Using cmd As New SqlCommand("GetScripts", _connScriptViewer)
-        '            cmd.CommandType = CommandType.StoredProcedure
-
-        '            cmd.Parameters.AddWithValue("@database", databasename)
-        '            cmd.Parameters.AddWithValue("@eventorcustom", librarytype)
-        '            If Not String.IsNullOrWhiteSpace(txtSearch.Text) Then
-        '                cmd.Parameters.AddWithValue("@searchstring", txtSearch.Text)
-        '            End If
-        '            cmd.Parameters.AddWithValue("@querytype", 1)
-
-        '            Using adapter As New SqlDataAdapter(cmd)
-
-        '                Dim dt As New DataTable
-
-        '                _connScriptViewer.Open()
-
-        '                adapter.Fill(dt)
-
-        '                _connScriptViewer.Close()
-
-        '                dgvEventLibraries.DataSource = dt
-
-        '                dgvEventLibraries.ShowCellToolTips = True
-
-        '                dgvEventLibraries.Columns(1).Visible = False
-        '            End Using
-
-        '        End Using
-
-        '        dgvEventLibraries.Columns(0).Width = 200
-        '        dgvEventLibraries.Visible = True
-        '        dgvEventLibraries.ClearSelection()
-        '    Catch ex As Exception
-        '        MessageBox.Show("Error loading event libraries. " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        '    End Try
-        'End Using
 
     End Sub
 
@@ -280,7 +192,6 @@ Public Class frmMain
 
                 dgvEventLibraries.Columns(0).Width = 200
                 dgvEventLibraries.Visible = True
-                'dgvEventLibraries.ClearSelection()
             Catch ex As Exception
                 MessageBox.Show("Error loading event libraries. " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
@@ -296,10 +207,7 @@ Public Class frmMain
         lblEventFunction.Visible = False
 
 
-        'Dim databasename = cmbClients.SelectedItem & "_intellidact"
         Dim databasename = cmbClients.Text
-
-        'Dim connectionString As String = ConfigurationManager.ConnectionStrings("ScriptViewer").ConnectionString
 
         If cmbClients.SelectedIndex = 0 Then
             MsgBox("Please select a valid client.", Title:="")
@@ -348,11 +256,7 @@ Public Class frmMain
     Private Sub dgvEventLibraries_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvEventLibraries.CellClick
         fctbScript.Visible = False
 
-        'Dim databasename = cmbClients.SelectedItem & "_intellidact"
         Dim databasename = cmbClients.Text
-
-        'Dim connectionString As String = ConfigurationManager.ConnectionStrings("ScriptViewer").ConnectionString
-
         Using _connScriptViewer As New SqlConnection(DatabaseConfig.ConnectionString)
             Try
                 Using cmd As New SqlCommand("GetScripts", _connScriptViewer)
@@ -383,7 +287,6 @@ Public Class frmMain
                         dgvEventLibraryEvents.Columns(1).Visible = False
                         dgvEventLibraryEvents.Columns(2).Visible = False
 
-                        ' dgvEventLibraries.Columns(0).Width = 200
                         dgvEventLibraryEvents.Visible = True
                     End Using
 
@@ -407,7 +310,6 @@ Public Class frmMain
     End Sub
 
     Private Sub dgvEventLibraryEvents_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvEventLibraryEvents.CellClick
-        'fctbScript.Dock = DockStyle.Fill
 
         Dim cellvalue = dgvEventLibraryEvents.Rows(e.RowIndex).Cells(e.ColumnIndex).Value.ToString
 
@@ -417,10 +319,7 @@ Public Class frmMain
         fctbScript.Language = Language.JS
 
 
-        'Dim databasename = cmbClients.SelectedItem & "_intellidact"
         Dim databasename = cmbClients.Text
-
-        'Dim connectionString As String = ConfigurationManager.ConnectionStrings("ScriptViewer").ConnectionString
 
         Using _connScriptViewer As New SqlConnection(DatabaseConfig.ConnectionString)
             Try
@@ -491,21 +390,12 @@ Public Class frmMain
         MsgBox("open import data")
     End Sub
 
-    'Friend WithEvents dgvEventLibraries As DataGridView
-    'Friend WithEvents btnEventLibraries As System.Windows.Forms.Button
-    'Friend WithEvents btnCustomLibraries As System.Windows.Forms.Button
-    'Friend WithEvents dgvEventLibraryEvents As DataGridView
-
-
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         If String.IsNullOrWhiteSpace(txtSearch.Text) Then
             MsgBox("Please enter a search value")
         Else
-            'dgvEventLibraries.Visible = False
             dgvEventLibraryEvents.Visible = False
-            'lblLibraryType.Visible = False
-            'lblEventFunction.Visible = False
             fctbScript.Visible = False
             LoadClientList()
             FillEvents()
@@ -533,9 +423,6 @@ Public Class frmMain
         End Try
 
     End Sub
-
-
-
     Private Async Function GetBatchesAsync() As Task
 
         Dim apiUrl As String =
@@ -582,14 +469,6 @@ Public Class frmMain
     End Sub
 
     Private Sub mnuImport_Click(sender As Object, e As EventArgs) Handles mnuImport.Click
-        'Dim userinput As String = InputBox("Enter admin password:")
-
-        'If String.IsNullOrWhiteSpace(userinput) Or userinput <> "tyler" Then
-        '    MessageBox.Show("Invalid Entry")
-        '    Return
-        'End If
-
-
         frmImport.ShowDialog()
     End Sub
 End Class
