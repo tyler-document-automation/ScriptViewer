@@ -145,9 +145,6 @@ Public Class frmImport
             'rdoNonCloud is checked, do something else
         End If
 
-
-
-
     End Sub
 
     Private Sub ImportDataCloud(client As String, folderpath As String)
