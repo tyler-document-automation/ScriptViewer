@@ -469,6 +469,20 @@ Public Class frmMain
     End Sub
 
     Private Sub mnuImport_Click(sender As Object, e As EventArgs) Handles mnuImport.Click
-        frmImport.ShowDialog()
+        Using loginForm As New frmAdminLogin()
+
+            If loginForm.ShowDialog(Me) <> DialogResult.OK Then
+                Return
+            End If
+
+        End Using
+
+        Using frmImport As New frmImport()
+
+            frmImport.ShowDialog(Me)
+
+        End Using
+
+        LoadClientList()
     End Sub
 End Class
