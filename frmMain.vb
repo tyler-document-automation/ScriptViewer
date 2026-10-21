@@ -205,7 +205,8 @@ Public Class frmMain
 
 
                     cmbVersions.DataSource = dt
-                    cmbVersions.DisplayMember = "VersionNumber"
+                    cmbVersions.DisplayMember = "VersionInfo"
+                    cmbVersions.ValueMember = "VersionNumber"
 
                     'Dim foundIndex As Integer = cmbClients.FindStringExact(currentClient)
 
@@ -313,7 +314,7 @@ Public Class frmMain
                         cmd.Parameters.AddWithValue("@searchstring", txtSearch.Text)
                     End If
                     cmd.Parameters.AddWithValue("@querytype", 1)
-                    cmd.Parameters.AddWithValue("@versionnumber", cmbVersions.Text)
+                    cmd.Parameters.AddWithValue("@versionnumber", cmbVersions.SelectedValue)
 
                     Using adapter As New SqlDataAdapter(cmd)
 
@@ -374,7 +375,7 @@ Public Class frmMain
                         cmd.Parameters.AddWithValue("@searchstring", txtSearch.Text)
                     End If
                     cmd.Parameters.AddWithValue("@querytype", 1)
-                    cmd.Parameters.AddWithValue("@versionnumber", cmbVersions.Text)
+                    cmd.Parameters.AddWithValue("@versionnumber", cmbVersions.SelectedValue)
 
                     Using adapter As New SqlDataAdapter(cmd)
 

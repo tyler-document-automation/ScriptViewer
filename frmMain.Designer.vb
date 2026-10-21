@@ -292,7 +292,7 @@ Partial Class frmMain
         cmbVersions.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cmbVersions.FormattingEnabled = True
         cmbVersions.ItemHeight = 20
-        cmbVersions.Location = New Point(345, 9)
+        cmbVersions.Location = New Point(320, 9)
         cmbVersions.Name = "cmbVersions"
         cmbVersions.Size = New Size(226, 28)
         cmbVersions.TabIndex = 25
