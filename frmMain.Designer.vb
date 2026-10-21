@@ -45,7 +45,6 @@ Partial Class frmMain
         lblLibraryType = New Label()
         SqlCommand1 = New Microsoft.Data.SqlClient.SqlCommand()
         lblEventFunction = New Label()
-        lblScriptVersion = New Label()
         MenuStrip1 = New MenuStrip()
         ReportsToolStripMenuItem = New ToolStripMenuItem()
         tsVersionByClient = New ToolStripMenuItem()
@@ -58,6 +57,7 @@ Partial Class frmMain
         btnAPI = New System.Windows.Forms.Button()
         fctbScript = New FastColoredTextBox()
         Panel1 = New Panel()
+        cmbVersions = New System.Windows.Forms.ComboBox()
         btnCloudSites = New System.Windows.Forms.Button()
         rdoCustom = New RadioButton()
         rdoEvent = New RadioButton()
@@ -156,17 +156,6 @@ Partial Class frmMain
         lblEventFunction.TabIndex = 9
         lblEventFunction.Text = "Events"
         lblEventFunction.Visible = False
-        ' 
-        ' lblScriptVersion
-        ' 
-        lblScriptVersion.AutoSize = True
-        lblScriptVersion.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblScriptVersion.Location = New Point(332, 11)
-        lblScriptVersion.Name = "lblScriptVersion"
-        lblScriptVersion.Size = New Size(133, 20)
-        lblScriptVersion.TabIndex = 10
-        lblScriptVersion.Text = "ClientScriptVersion"
-        lblScriptVersion.Visible = False
         ' 
         ' MenuStrip1
         ' 
@@ -280,13 +269,13 @@ Partial Class frmMain
         ' 
         ' Panel1
         ' 
+        Panel1.Controls.Add(cmbVersions)
         Panel1.Controls.Add(btnCloudSites)
         Panel1.Controls.Add(rdoCustom)
         Panel1.Controls.Add(rdoEvent)
         Panel1.Controls.Add(cmbClients)
         Panel1.Controls.Add(btnEventLibraries)
         Panel1.Controls.Add(btnCustomLibraries)
-        Panel1.Controls.Add(lblScriptVersion)
         Panel1.Controls.Add(btnUndo)
         Panel1.Controls.Add(btnSearch)
         Panel1.Controls.Add(lblSearch)
@@ -296,6 +285,17 @@ Partial Class frmMain
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(1479, 87)
         Panel1.TabIndex = 21
+        ' 
+        ' cmbVersions
+        ' 
+        cmbVersions.DropDownStyle = ComboBoxStyle.DropDownList
+        cmbVersions.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cmbVersions.FormattingEnabled = True
+        cmbVersions.ItemHeight = 20
+        cmbVersions.Location = New Point(345, 9)
+        cmbVersions.Name = "cmbVersions"
+        cmbVersions.Size = New Size(226, 28)
+        cmbVersions.TabIndex = 25
         ' 
         ' btnCloudSites
         ' 
@@ -382,7 +382,6 @@ Partial Class frmMain
     Friend WithEvents lblLibraryType As Label
     Friend WithEvents SqlCommand1 As Microsoft.Data.SqlClient.SqlCommand
     Friend WithEvents lblEventFunction As Label
-    Friend WithEvents lblScriptVersion As Label
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents tsMenu As ToolStripMenuItem
     Friend WithEvents ReportsToolStripMenuItem As ToolStripMenuItem
@@ -403,6 +402,7 @@ Partial Class frmMain
     Friend WithEvents rdoCustom As RadioButton
     Friend WithEvents rdoEvent As RadioButton
     Friend WithEvents btnCloudSites As System.Windows.Forms.Button
+    Friend WithEvents cmbVersions As System.Windows.Forms.ComboBox
 
 
 End Class

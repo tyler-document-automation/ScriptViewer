@@ -124,7 +124,8 @@ Public Class frmMain
             btnEventLibraries.Enabled = True
             'btnSearch.Enabled = True
             'btnUndo.Enabled = True
-            GetScriptVersion()
+            'GetScriptVersion()
+            GetScriptVersions()
         Else
             btnCustomLibraries.Enabled = False
             btnEventLibraries.Enabled = False
@@ -142,7 +143,9 @@ Public Class frmMain
 
     End Sub
 
-
+    Private Sub cmbVersions_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cmbVersions.SelectionChangeCommitted
+        FillEvents()
+    End Sub
 
     Private Sub GetScriptVersion()
         'Dim databasename = cmbClients.SelectedItem & "_intellidact"
@@ -166,14 +169,59 @@ Public Class frmMain
 
                         _connScriptViewer.Close()
 
-                        lblScriptVersion.Text = result.ToString
-                        lblScriptVersion.Visible = True
+                        'lblScriptVersion.Text = result.ToString
+                        'lblScriptVersion.Visible = True
                     End Using
 
                 End Using
 
             Catch ex As Exception
                 MessageBox.Show("Error loading version info. " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Using
+    End Sub
+
+    Private Sub GetScriptVersions()
+        Dim currentClient As String = cmbClients.Text
+
+        Dim dt As New DataTable()
+
+        Using _connScriptViewer = New SqlConnection(connectionString)
+            Try
+
+                Using cmd As New SqlCommand("GetScripts", _connScriptViewer)
+                    cmd.CommandType = CommandType.StoredProcedure
+
+                    cmd.Parameters.AddWithValue("@database", currentClient)
+                    cmd.Parameters.AddWithValue("@querytype", 6)
+
+                    Using da As New SqlDataAdapter(cmd)
+                        da.Fill(dt)
+                    End Using
+
+                    'Dim newRow As DataRow = dt.NewRow()
+                    'newRow("VersionNumber") = "--Select client--"
+                    'dt.Rows.InsertAt(newRow, 0)
+
+
+                    cmbVersions.DataSource = dt
+                    cmbVersions.DisplayMember = "VersionNumber"
+
+                    'Dim foundIndex As Integer = cmbClients.FindStringExact(currentClient)
+
+                    'If foundIndex >= 0 Then
+                    'cmbClients.SelectedIndex = foundIndex
+                    'Else
+                    'cmbClients.SelectedIndex = 0
+                    'End If
+
+                    'cmbClients.SelectedIndex = 0
+
+                End Using
+
+
+            Catch ex As Exception
+                MessageBox.Show("Error loading version list. " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End Using
     End Sub
@@ -265,6 +313,7 @@ Public Class frmMain
                         cmd.Parameters.AddWithValue("@searchstring", txtSearch.Text)
                     End If
                     cmd.Parameters.AddWithValue("@querytype", 1)
+                    cmd.Parameters.AddWithValue("@versionnumber", cmbVersions.Text)
 
                     Using adapter As New SqlDataAdapter(cmd)
 
@@ -325,6 +374,7 @@ Public Class frmMain
                         cmd.Parameters.AddWithValue("@searchstring", txtSearch.Text)
                     End If
                     cmd.Parameters.AddWithValue("@querytype", 1)
+                    cmd.Parameters.AddWithValue("@versionnumber", cmbVersions.Text)
 
                     Using adapter As New SqlDataAdapter(cmd)
 
@@ -594,4 +644,6 @@ Public Class frmMain
             frm.ShowDialog()
         End Using
     End Sub
+
+
 End Class
