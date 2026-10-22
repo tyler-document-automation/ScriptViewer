@@ -31,7 +31,7 @@ Public Class frmVersionReport
                 End Using
 
 
-                dgvVersionReport.Columns(0).Width = 150
+                dgvVersionReport.Columns(0).Width = 200
                 dgvVersionReport.Columns(1).Width = 50
                 dgvVersionReport.Columns(2).Width = 150
 

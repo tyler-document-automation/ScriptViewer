@@ -194,6 +194,9 @@ Public Class frmMain
 
                     cmd.Parameters.AddWithValue("@database", currentClient)
                     cmd.Parameters.AddWithValue("@querytype", 6)
+                    If Not String.IsNullOrWhiteSpace(txtSearch.Text) Then
+                        cmd.Parameters.AddWithValue("@searchstring", txtSearch.Text)
+                    End If
 
                     Using da As New SqlDataAdapter(cmd)
                         da.Fill(dt)
@@ -423,6 +426,7 @@ Public Class frmMain
                     End If
                     cmd.Parameters.AddWithValue("@querytype", 2)
                     cmd.Parameters.AddWithValue("@library", dgvEventLibraries.CurrentCell.Value)
+                    cmd.Parameters.AddWithValue("@versionnumber", cmbVersions.SelectedValue)
 
                     Using adapter As New SqlDataAdapter(cmd)
 
@@ -493,6 +497,7 @@ Public Class frmMain
                     cmd.Parameters.AddWithValue("@querytype", 3)
                     cmd.Parameters.AddWithValue("@library", dgvEventLibraries.CurrentCell.Value)
                     cmd.Parameters.AddWithValue("@eventfunctionname", cellvalue)
+                    cmd.Parameters.AddWithValue("@versionnumber", cmbVersions.SelectedValue)
 
                     _connScriptViewer.Open()
                     Using reader As SqlDataReader = cmd.ExecuteReader
@@ -572,6 +577,7 @@ Public Class frmMain
             'lblEventFunction.Visible = False
             fctbScript.Visible = False
             LoadClientList()
+            GetScriptVersions()
             FillEvents()
 
         End If
@@ -585,6 +591,8 @@ Public Class frmMain
         lblEventFunction.Visible = False
         fctbScript.Visible = False
         LoadClientList()
+        GetScriptVersions()
+        FillEvents()
 
     End Sub
 
@@ -631,11 +639,11 @@ Public Class frmMain
 
     End Function
 
-    Private Sub rdoEvent_CheckedChanged(sender As Object, e As EventArgs) Handles rdoEvent.CheckedChanged
+    Private Sub rdoEvent_CheckedChanged(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub rdoCustom_CheckedChanged(sender As Object, e As EventArgs) Handles rdoCustom.CheckedChanged
+    Private Sub rdoCustom_CheckedChanged(sender As Object, e As EventArgs)
 
     End Sub
 
