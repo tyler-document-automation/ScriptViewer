@@ -4,11 +4,14 @@
     <_LastSelectedProfileId>C:\VisualStudioProjects\ScriptViewer\My Project\PublishProfiles\ClickOnceProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="CompareTextBox.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="frmCloudSites.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmCompare.vb">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmMain.vb">
       <SubType>Form</SubType>
