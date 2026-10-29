@@ -245,7 +245,7 @@ Partial Class frmMain
         fctbScript.AutoCompleteBracketsList = New Char() {"("c, ")"c, "{"c, "}"c, "["c, "]"c, """"c, """"c, "'"c, "'"c}
         fctbScript.AutoIndentCharsPatterns = "^\s*[\w\.]+(\s\w+)?\s*(?<range>=)\s*(?<range>[^;=]+);" & vbCrLf & "^\s*(case|default)\s*[^:]*(?<range>:)\s*(?<range>[^;]+);"
         fctbScript.AutoScrollMinSize = New Size(31, 18)
-        fctbScript.AutoSize = True
+        fctbScript.AutoSize = False
         fctbScript.BackBrush = Nothing
         fctbScript.BackColor = Color.LightGray
         fctbScript.CharHeight = 18
@@ -330,11 +330,19 @@ Partial Class frmMain
         Controls.Add(dgvEventLibraries)
         Controls.Add(MenuStrip1)
         Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        FormBorderStyle = FormBorderStyle.FixedSingle
-        Icon = CType(resources.GetObject("$this.Icon"), Icon)
-        MainMenuStrip = MenuStrip1
-        MaximizeBox = False
-        MaximumSize = New Size(1495, 911)
+        ' --- keep non-FCTB controls fixed to upper-left ---
+        dgvEventLibraries.Anchor = AnchorStyles.Top Or AnchorStyles.Left
+        dgvEventLibraryEvents.Anchor = AnchorStyles.Top Or AnchorStyles.Left
+        lblLibraryType.Anchor = AnchorStyles.Top Or AnchorStyles.Left
+        lblEventFunction.Anchor = AnchorStyles.Top Or AnchorStyles.Left
+        btnAPI.Anchor = AnchorStyles.Top Or AnchorStyles.Left
+        ' --- make FastColoredTextBox grow/shrink with form ---
+        fctbScript.AutoSize = False
+        fctbScript.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        ' --- allow maximizing/resizing the form ---
+        FormBorderStyle = FormBorderStyle.Sizable
+        MaximizeBox = True
+        MaximumSize = New Size(0, 0)
         Name = "frmMain"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Script Viewer"
