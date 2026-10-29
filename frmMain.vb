@@ -27,10 +27,10 @@ Public Class frmMain
         Try
 
             Me.MinimumSize = Me.Size
+            btnCompare.Enabled = False
 
             CreateConnection()
             LoadClientList()
-
 
         Catch ex As Exception
             MessageBox.Show("Database connection failed: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -120,6 +120,8 @@ Public Class frmMain
         'dgvEventLibraries.Visible = False
         dgvEventLibraryEvents.Visible = False
         fctbScript.Visible = False
+        cmbVersions.DataSource = Nothing
+        UpdateCompareButton()
         If cmbClients.SelectedIndex > 0 Then
             btnCustomLibraries.Enabled = True
             btnEventLibraries.Enabled = True
@@ -211,6 +213,7 @@ Public Class frmMain
                     cmbVersions.DataSource = dt
                     cmbVersions.DisplayMember = "VersionInfo"
                     cmbVersions.ValueMember = "VersionNumber"
+                    UpdateCompareButton()
 
                     'Dim foundIndex As Integer = cmbClients.FindStringExact(currentClient)
 
@@ -655,5 +658,32 @@ Public Class frmMain
         End Using
     End Sub
 
+    Private Sub btnCompare_Click(sender As Object, e As EventArgs) Handles btnCompare.Click
+        If dgvEventLibraryEvents.SelectedCells.Count = 0 OrElse dgvEventLibraries.CurrentCell Is Nothing Then
+            Return
+        End If
 
+        Dim selectedCell As DataGridViewCell = dgvEventLibraryEvents.SelectedCells(0)
+
+        Using compareForm As New frmCompare()
+            compareForm.ClientName = cmbClients.Text
+            compareForm.LibraryType = librarytype
+            compareForm.LibraryName = dgvEventLibraries.CurrentCell.Value.ToString()
+            compareForm.EventFunctionName = dgvEventLibraryEvents.Rows(selectedCell.RowIndex).Cells(0).Value.ToString()
+            compareForm.ShowDialog(Me)
+        End Using
+    End Sub
+
+    Private Sub UpdateCompareButton()
+        btnCompare.Enabled = cmbVersions.Items.Count > 1 AndAlso
+            dgvEventLibraryEvents.Visible AndAlso dgvEventLibraryEvents.SelectedCells.Count > 0
+    End Sub
+
+    Private Sub dgvEventLibraryEvents_SelectionChanged(sender As Object, e As EventArgs) Handles dgvEventLibraryEvents.SelectionChanged
+        UpdateCompareButton()
+    End Sub
+
+    Private Sub dgvEventLibraryEvents_VisibleChanged(sender As Object, e As EventArgs) Handles dgvEventLibraryEvents.VisibleChanged
+        UpdateCompareButton()
+    End Sub
 End Class

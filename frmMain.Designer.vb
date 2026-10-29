@@ -60,6 +60,7 @@ Partial Class frmMain
         cmbVersions = New System.Windows.Forms.ComboBox()
         btnCloudSites = New System.Windows.Forms.Button()
         cmbClients = New System.Windows.Forms.ComboBox()
+        btnCompare = New System.Windows.Forms.Button()
         CType(dgvEventLibraries, ComponentModel.ISupportInitialize).BeginInit()
         CType(dgvEventLibraryEvents, ComponentModel.ISupportInitialize).BeginInit()
         MenuStrip1.SuspendLayout()
@@ -242,10 +243,10 @@ Partial Class frmMain
         ' 
         ' fctbScript
         ' 
+        fctbScript.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         fctbScript.AutoCompleteBracketsList = New Char() {"("c, ")"c, "{"c, "}"c, "["c, "]"c, """"c, """"c, "'"c, "'"c}
         fctbScript.AutoIndentCharsPatterns = "^\s*[\w\.]+(\s\w+)?\s*(?<range>=)\s*(?<range>[^;=]+);" & vbCrLf & "^\s*(case|default)\s*[^:]*(?<range>:)\s*(?<range>[^;]+);"
         fctbScript.AutoScrollMinSize = New Size(31, 18)
-        fctbScript.AutoSize = False
         fctbScript.BackBrush = Nothing
         fctbScript.BackColor = Color.LightGray
         fctbScript.CharHeight = 18
@@ -267,6 +268,7 @@ Partial Class frmMain
         ' 
         ' Panel1
         ' 
+        Panel1.Controls.Add(btnCompare)
         Panel1.Controls.Add(cmbVersions)
         Panel1.Controls.Add(btnCloudSites)
         Panel1.Controls.Add(cmbClients)
@@ -314,6 +316,17 @@ Partial Class frmMain
         cmbClients.Size = New Size(298, 28)
         cmbClients.TabIndex = 21
         ' 
+        ' btnCompare
+        ' 
+        btnCompare.FlatStyle = FlatStyle.System
+        btnCompare.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnCompare.Location = New Point(565, 10)
+        btnCompare.Name = "btnCompare"
+        btnCompare.Size = New Size(98, 27)
+        btnCompare.TabIndex = 26
+        btnCompare.Text = "Compare"
+        btnCompare.UseVisualStyleBackColor = True
+        ' 
         ' frmMain
         ' 
         AcceptButton = btnSearch
@@ -330,19 +343,6 @@ Partial Class frmMain
         Controls.Add(dgvEventLibraries)
         Controls.Add(MenuStrip1)
         Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        ' --- keep non-FCTB controls fixed to upper-left ---
-        dgvEventLibraries.Anchor = AnchorStyles.Top Or AnchorStyles.Left
-        dgvEventLibraryEvents.Anchor = AnchorStyles.Top Or AnchorStyles.Left
-        lblLibraryType.Anchor = AnchorStyles.Top Or AnchorStyles.Left
-        lblEventFunction.Anchor = AnchorStyles.Top Or AnchorStyles.Left
-        btnAPI.Anchor = AnchorStyles.Top Or AnchorStyles.Left
-        ' --- make FastColoredTextBox grow/shrink with form ---
-        fctbScript.AutoSize = False
-        fctbScript.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        ' --- allow maximizing/resizing the form ---
-        FormBorderStyle = FormBorderStyle.Sizable
-        MaximizeBox = True
-        MaximumSize = New Size(0, 0)
         Name = "frmMain"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Script Viewer"
@@ -379,6 +379,7 @@ Partial Class frmMain
     Friend WithEvents dgvEventLibraryEvents As DataGridView
     Friend WithEvents btnCloudSites As System.Windows.Forms.Button
     Friend WithEvents cmbVersions As System.Windows.Forms.ComboBox
+    Friend WithEvents btnCompare As System.Windows.Forms.Button
 
 
 End Class

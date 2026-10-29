@@ -7,6 +7,9 @@
     <Compile Update="frmCloudSites.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="frmCompare.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
