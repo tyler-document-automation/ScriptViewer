@@ -32,6 +32,8 @@ Public Class frmCompare
 
         LoadVersions(cmbVersionLeft)
         LoadVersions(cmbVersionRight)
+        cmbVersionLeft.SelectedIndex = If(cmbVersionLeft.Items.Count > 0, 0, -1)
+        cmbVersionRight.SelectedIndex = If(cmbVersionRight.Items.Count > 1, 1, -1)
 
         RefreshScripts()
     End Sub
@@ -339,4 +341,7 @@ Public Class frmCompare
         ScrollBoth(Math.Max(0, Math.Min(CommonScrollMaximum(), source.VerticalScroll.Value)))
     End Sub
 
+    Private Sub lblCompareItem_Click(sender As Object, e As EventArgs) Handles lblCompareItem.Click
+
+    End Sub
 End Class

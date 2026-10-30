@@ -57,10 +57,11 @@ Partial Class frmMain
         btnAPI = New System.Windows.Forms.Button()
         fctbScript = New FastColoredTextBox()
         Panel1 = New Panel()
+        btnCompare = New System.Windows.Forms.Button()
         cmbVersions = New System.Windows.Forms.ComboBox()
         btnCloudSites = New System.Windows.Forms.Button()
         cmbClients = New System.Windows.Forms.ComboBox()
-        btnCompare = New System.Windows.Forms.Button()
+        btnComments = New System.Windows.Forms.Button()
         CType(dgvEventLibraries, ComponentModel.ISupportInitialize).BeginInit()
         CType(dgvEventLibraryEvents, ComponentModel.ISupportInitialize).BeginInit()
         MenuStrip1.SuspendLayout()
@@ -268,6 +269,7 @@ Partial Class frmMain
         ' 
         ' Panel1
         ' 
+        Panel1.Controls.Add(btnComments)
         Panel1.Controls.Add(btnCompare)
         Panel1.Controls.Add(cmbVersions)
         Panel1.Controls.Add(btnCloudSites)
@@ -283,6 +285,17 @@ Partial Class frmMain
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(1479, 87)
         Panel1.TabIndex = 21
+        ' 
+        ' btnCompare
+        ' 
+        btnCompare.FlatStyle = FlatStyle.System
+        btnCompare.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnCompare.Location = New Point(611, 11)
+        btnCompare.Name = "btnCompare"
+        btnCompare.Size = New Size(98, 27)
+        btnCompare.TabIndex = 26
+        btnCompare.Text = "Compare"
+        btnCompare.UseVisualStyleBackColor = True
         ' 
         ' cmbVersions
         ' 
@@ -316,16 +329,17 @@ Partial Class frmMain
         cmbClients.Size = New Size(298, 28)
         cmbClients.TabIndex = 21
         ' 
-        ' btnCompare
+        ' btnComments
         ' 
-        btnCompare.FlatStyle = FlatStyle.System
-        btnCompare.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnCompare.Location = New Point(565, 10)
-        btnCompare.Name = "btnCompare"
-        btnCompare.Size = New Size(98, 27)
-        btnCompare.TabIndex = 26
-        btnCompare.Text = "Compare"
-        btnCompare.UseVisualStyleBackColor = True
+        btnComments.Enabled = False
+        btnComments.FlatStyle = FlatStyle.System
+        btnComments.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnComments.Location = New Point(552, 9)
+        btnComments.Name = "btnComments"
+        btnComments.Size = New Size(19, 27)
+        btnComments.TabIndex = 27
+        btnComments.Text = "?"
+        btnComments.UseVisualStyleBackColor = True
         ' 
         ' frmMain
         ' 
@@ -380,6 +394,7 @@ Partial Class frmMain
     Friend WithEvents btnCloudSites As System.Windows.Forms.Button
     Friend WithEvents cmbVersions As System.Windows.Forms.ComboBox
     Friend WithEvents btnCompare As System.Windows.Forms.Button
+    Friend WithEvents btnComments As System.Windows.Forms.Button
 
 
 End Class

@@ -61,6 +61,7 @@ Partial Class frmCompare
         ' 
         lblCompareClient.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         lblCompareClient.AutoEllipsis = True
+        lblCompareClient.Font = New Font("Segoe UI", 11.25F)
         lblCompareClient.Location = New Point(24, 8)
         lblCompareClient.Name = "lblCompareClient"
         lblCompareClient.Size = New Size(741, 28)
@@ -70,9 +71,10 @@ Partial Class frmCompare
         ' lblCompareLibrary
         ' 
         lblCompareLibrary.AutoEllipsis = True
+        lblCompareLibrary.Font = New Font("Segoe UI", 11.25F)
         lblCompareLibrary.Location = New Point(24, 36)
         lblCompareLibrary.Name = "lblCompareLibrary"
-        lblCompareLibrary.Size = New Size(354, 28)
+        lblCompareLibrary.Size = New Size(260, 28)
         lblCompareLibrary.TabIndex = 31
         lblCompareLibrary.Text = "Library:"
         ' 
@@ -80,7 +82,8 @@ Partial Class frmCompare
         ' 
         lblCompareItem.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         lblCompareItem.AutoEllipsis = True
-        lblCompareItem.Location = New Point(186, 36)
+        lblCompareItem.Font = New Font("Segoe UI", 11.25F)
+        lblCompareItem.Location = New Point(354, 36)
         lblCompareItem.Name = "lblCompareItem"
         lblCompareItem.Size = New Size(354, 28)
         lblCompareItem.TabIndex = 32
@@ -93,10 +96,11 @@ Partial Class frmCompare
         fctbLeft.AutoScrollMinSize = New Size(31, 18)
         fctbLeft.BackBrush = Nothing
         fctbLeft.BackColor = Color.LightGray
+        fctbLeft.BorderStyle = BorderStyle.FixedSingle
         fctbLeft.CharHeight = 18
         fctbLeft.CharWidth = 10
         fctbLeft.DisabledColor = Color.FromArgb(CByte(100), CByte(180), CByte(180), CByte(180))
-        fctbLeft.Font = New Font("Courier New", 12.0F, FontStyle.Bold)
+        fctbLeft.Font = New Font("Courier New", 12F, FontStyle.Bold)
         fctbLeft.Hotkeys = resources.GetString("fctbLeft.Hotkeys")
         fctbLeft.IsReplaceMode = False
         fctbLeft.Location = New Point(24, 96)
@@ -117,10 +121,11 @@ Partial Class frmCompare
         fctbRight.AutoScrollMinSize = New Size(31, 18)
         fctbRight.BackBrush = Nothing
         fctbRight.BackColor = Color.LightGray
+        fctbRight.BorderStyle = BorderStyle.FixedSingle
         fctbRight.CharHeight = 18
         fctbRight.CharWidth = 10
         fctbRight.DisabledColor = Color.FromArgb(CByte(100), CByte(180), CByte(180), CByte(180))
-        fctbRight.Font = New Font("Courier New", 12.0F, FontStyle.Bold)
+        fctbRight.Font = New Font("Courier New", 12F, FontStyle.Bold)
         fctbRight.Hotkeys = resources.GetString("fctbRight.Hotkeys")
         fctbRight.IsReplaceMode = False
         fctbRight.Location = New Point(411, 96)
@@ -136,7 +141,7 @@ Partial Class frmCompare
         ' 
         ' frmCompare
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
         Controls.Add(fctbRight)
@@ -146,9 +151,10 @@ Partial Class frmCompare
         Controls.Add(lblCompareClient)
         Controls.Add(cmbVersionRight)
         Controls.Add(cmbVersionLeft)
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
         MaximizeBox = False
         Name = "frmCompare"
-        Text = "frmCompare"
+        Text = "Version Compare"
         WindowState = FormWindowState.Maximized
         CType(fctbLeft, ComponentModel.ISupportInitialize).EndInit()
         CType(fctbRight, ComponentModel.ISupportInitialize).EndInit()

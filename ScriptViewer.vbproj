@@ -37,9 +37,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="GetScripts.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

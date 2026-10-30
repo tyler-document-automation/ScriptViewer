@@ -1,2 +1,0 @@
-﻿test v2 versioning
-update import to load version numbers and not delete old client data

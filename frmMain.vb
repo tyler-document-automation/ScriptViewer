@@ -100,6 +100,7 @@ Public Class frmMain
                     Else
                         cmbClients.SelectedIndex = 0
                     End If
+                    btnComments.Enabled = cmbClients.SelectedIndex > 0
 
                     'cmbClients.SelectedIndex = 0
 
@@ -125,6 +126,7 @@ Public Class frmMain
         If cmbClients.SelectedIndex > 0 Then
             btnCustomLibraries.Enabled = True
             btnEventLibraries.Enabled = True
+            btnComments.Enabled = True
             'btnSearch.Enabled = True
             'btnUndo.Enabled = True
             'GetScriptVersion()
@@ -132,6 +134,7 @@ Public Class frmMain
         Else
             btnCustomLibraries.Enabled = False
             btnEventLibraries.Enabled = False
+            btnComments.Enabled = False
             'lblLibraryType.Visible = False
             'lblEventFunction.Visible = False
             'lblScriptVersion.Visible = False
@@ -181,6 +184,15 @@ Public Class frmMain
             Catch ex As Exception
                 MessageBox.Show("Error loading version info. " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
+        End Using
+    End Sub
+
+    Private Sub btnComments_Click(sender As Object, e As EventArgs) Handles btnComments.Click
+        If cmbClients.SelectedIndex <= 0 Then Return
+
+        Using commentsForm As New frmComments()
+            commentsForm.ClientName = cmbClients.Text
+            commentsForm.ShowDialog(Me)
         End Using
     End Sub
 
