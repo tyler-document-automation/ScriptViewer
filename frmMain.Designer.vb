@@ -57,11 +57,11 @@ Partial Class frmMain
         btnAPI = New System.Windows.Forms.Button()
         fctbScript = New FastColoredTextBox()
         Panel1 = New Panel()
+        btnComments = New System.Windows.Forms.Button()
         btnCompare = New System.Windows.Forms.Button()
         cmbVersions = New System.Windows.Forms.ComboBox()
         btnCloudSites = New System.Windows.Forms.Button()
         cmbClients = New System.Windows.Forms.ComboBox()
-        btnComments = New System.Windows.Forms.Button()
         CType(dgvEventLibraries, ComponentModel.ISupportInitialize).BeginInit()
         CType(dgvEventLibraryEvents, ComponentModel.ISupportInitialize).BeginInit()
         MenuStrip1.SuspendLayout()
@@ -286,6 +286,18 @@ Partial Class frmMain
         Panel1.Size = New Size(1479, 87)
         Panel1.TabIndex = 21
         ' 
+        ' btnComments
+        ' 
+        btnComments.Enabled = False
+        btnComments.FlatStyle = FlatStyle.System
+        btnComments.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnComments.Location = New Point(552, 9)
+        btnComments.Name = "btnComments"
+        btnComments.Size = New Size(19, 27)
+        btnComments.TabIndex = 27
+        btnComments.Text = "?"
+        btnComments.UseVisualStyleBackColor = True
+        ' 
         ' btnCompare
         ' 
         btnCompare.FlatStyle = FlatStyle.System
@@ -329,18 +341,6 @@ Partial Class frmMain
         cmbClients.Size = New Size(298, 28)
         cmbClients.TabIndex = 21
         ' 
-        ' btnComments
-        ' 
-        btnComments.Enabled = False
-        btnComments.FlatStyle = FlatStyle.System
-        btnComments.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnComments.Location = New Point(552, 9)
-        btnComments.Name = "btnComments"
-        btnComments.Size = New Size(19, 27)
-        btnComments.TabIndex = 27
-        btnComments.Text = "?"
-        btnComments.UseVisualStyleBackColor = True
-        ' 
         ' frmMain
         ' 
         AcceptButton = btnSearch
@@ -357,6 +357,7 @@ Partial Class frmMain
         Controls.Add(dgvEventLibraries)
         Controls.Add(MenuStrip1)
         Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "frmMain"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Script Viewer"

@@ -20,8 +20,8 @@ Public Class frmCompare
     Private _synchronizingScroll As Boolean
     Private ReadOnly _leftScrollMask As New Panel With {.BackColor = SystemColors.Control, .TabStop = False}
     Private _wheelRemainder As Integer
-    Private ReadOnly _removedStyle As New TextStyle(Brushes.Black, Brushes.LightPink, FontStyle.Regular)
-    Private ReadOnly _addedStyle As New TextStyle(Brushes.Black, Brushes.LightGreen, FontStyle.Regular)
+    Private ReadOnly _removedStyle As New TextStyle(Brushes.Black, Brushes.LightGreen, FontStyle.Regular)
+    Private ReadOnly _addedStyle As New TextStyle(Brushes.Black, Brushes.LightPink, FontStyle.Regular)
 
     Private Sub frmCompare_Load(sender As Object, e As EventArgs) Handles Me.Load
         SetUpEditorSplitter()

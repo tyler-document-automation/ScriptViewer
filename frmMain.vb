@@ -682,6 +682,11 @@ Public Class frmMain
             compareForm.LibraryType = librarytype
             compareForm.LibraryName = dgvEventLibraries.CurrentCell.Value.ToString()
             compareForm.EventFunctionName = dgvEventLibraryEvents.Rows(selectedCell.RowIndex).Cells(0).Value.ToString()
+            'Place the restore bounds on the owner's monitor before maximizing.
+            compareForm.StartPosition = FormStartPosition.Manual
+            compareForm.WindowState = FormWindowState.Normal
+            compareForm.Bounds = Screen.FromControl(Me).WorkingArea
+            compareForm.WindowState = FormWindowState.Maximized
             compareForm.ShowDialog(Me)
         End Using
     End Sub
