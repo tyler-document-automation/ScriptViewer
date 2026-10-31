@@ -108,6 +108,7 @@ Public Class frmImport
     End Sub
 
     Private Sub btnImport_Click(sender As Object, e As EventArgs) Handles btnImport.Click
+        btnImport.Enabled = False
         Dim client As String = ""
 
         If rdoExisting.Checked Then
@@ -122,11 +123,11 @@ Public Class frmImport
             Return
         End If
 
-
-
         Dim folderPath As String = txtFolderPath.Text.Trim()
 
         txtOutput.Clear()
+
+        btnImport.Enabled = True
 
         Try
 
@@ -142,6 +143,7 @@ Public Class frmImport
 
         Catch ex As Exception
             AddOutput("The import failed:" & Environment.NewLine & ex.Message)
+            btnImport.Enabled = True
         End Try
 
     End Sub
@@ -166,6 +168,7 @@ Public Class frmImport
             Dim hasCustomLibraries As Boolean = Array.Exists(jsonFiles, Function(filePath) Path.GetFileName(filePath).StartsWith("custom_libraries", StringComparison.OrdinalIgnoreCase))
             Dim hasEventLibraries As Boolean = Array.Exists(jsonFiles, Function(filePath) Path.GetFileName(filePath).StartsWith("event_libraries", StringComparison.OrdinalIgnoreCase))
             Dim hasRelease As Boolean = Array.Exists(jsonFiles, Function(filePath) String.Equals(Path.GetFileName(filePath), "release.json", StringComparison.OrdinalIgnoreCase))
+            Dim hasReadme As Boolean = Array.Exists(Directory.GetFiles(folderPath, "*", SearchOption.TopDirectoryOnly), Function(filePath) String.Equals(Path.GetFileName(filePath), "readme.md", StringComparison.OrdinalIgnoreCase))
 
             If Not hasCustomLibraries Then
                 AddOutput("File check failed: A JSON file starting with 'custom_libraries' was not found.")
@@ -181,10 +184,6 @@ Public Class frmImport
                 AddOutput("File check failed: release.json was not found.")
                 Return False
             End If
-
-            Dim hasReadme As Boolean = Array.Exists(
-                Directory.GetFiles(folderPath, "*", SearchOption.TopDirectoryOnly),
-                Function(filePath) String.Equals(Path.GetFileName(filePath), "readme.md", StringComparison.OrdinalIgnoreCase))
 
             If Not hasReadme Then
                 AddOutput("File check failed: readme.md was not found.")
@@ -237,6 +236,14 @@ Public Class frmImport
             File.Copy(sourceFile, destinationFile, overwrite:=True)
         Next
 
+        Dim readmeFile As String = Array.Find(
+            Directory.GetFiles(sourceFolder, "*", SearchOption.TopDirectoryOnly),
+            Function(filePath) String.Equals(Path.GetFileName(filePath), "readme.md", StringComparison.OrdinalIgnoreCase))
+
+        If readmeFile IsNot Nothing Then
+            File.Copy(readmeFile, Path.Combine(tempFolder, "readme.md"), overwrite:=True)
+        End If
+
         AddOutput("Files copied successfully.")
 
     End Sub
@@ -248,9 +255,61 @@ Public Class frmImport
         If rdoCloud.Checked Then
             ImportDataCloud(client, folderpath)
         Else
-            'rdoNonCloud is checked, do something else
-
+            ImportDataNonCloud(client, folderpath)
         End If
+
+    End Sub
+
+    Private Sub ImportDataNonCloud(client As String, folderpath As String)
+        Dim files As String() = Directory.GetFiles(folderpath, "*", SearchOption.TopDirectoryOnly)
+        Dim jsonFiles As String() = Array.FindAll(files,
+            Function(filePath) String.Equals(Path.GetExtension(filePath), ".json", StringComparison.OrdinalIgnoreCase))
+
+        Dim releaseFile As String = Array.Find(jsonFiles,
+            Function(filePath) String.Equals(Path.GetFileName(filePath), "release.json", StringComparison.OrdinalIgnoreCase))
+        Dim eventFile As String = Array.Find(jsonFiles,
+            Function(filePath) Path.GetFileName(filePath).StartsWith("event_libraries", StringComparison.OrdinalIgnoreCase))
+        Dim customFile As String = Array.Find(jsonFiles,
+            Function(filePath) Path.GetFileName(filePath).StartsWith("custom_libraries", StringComparison.OrdinalIgnoreCase))
+        Dim readmeFile As String = Array.Find(files,
+            Function(filePath) String.Equals(Path.GetFileName(filePath), "readme.md", StringComparison.OrdinalIgnoreCase))
+
+        If jsonFiles.Length <> 3 OrElse releaseFile Is Nothing OrElse eventFile Is Nothing OrElse
+           customFile Is Nothing OrElse readmeFile Is Nothing Then
+            Throw New InvalidOperationException("Non-cloud import requires release.json, event_libraries JSON, custom_libraries JSON, and readme.md.")
+        End If
+
+        Dim releaseJson As String = File.ReadAllText(releaseFile)
+        Dim eventJson As String = File.ReadAllText(eventFile)
+        Dim customJson As String = File.ReadAllText(customFile)
+        Dim readmeMarkdown As String = File.ReadAllText(readmeFile)
+
+        Using connection As New SqlConnection(DatabaseConfig.ConnectionString)
+            Dim procedureOutput As New StringBuilder()
+
+            AddHandler connection.InfoMessage,
+                Sub(infoSender As Object, infoArgs As SqlInfoMessageEventArgs)
+                    procedureOutput.AppendLine(infoArgs.Message)
+                End Sub
+
+            Using command As New SqlCommand("ImportDataOld", connection)
+                command.CommandType = CommandType.StoredProcedure
+                command.Parameters.Add("@ClientName", SqlDbType.NVarChar, 255).Value = client
+                command.Parameters.Add("@ReleaseJson", SqlDbType.NVarChar, -1).Value = releaseJson
+                command.Parameters.Add("@EventLibrariesJson", SqlDbType.NVarChar, -1).Value = eventJson
+                command.Parameters.Add("@CustomLibrariesJson", SqlDbType.NVarChar, -1).Value = customJson
+                command.Parameters.Add("@ReadmeMarkdown", SqlDbType.NVarChar, -1).Value = readmeMarkdown
+
+                connection.Open()
+                command.ExecuteNonQuery()
+            End Using
+
+            If procedureOutput.Length > 0 Then
+                AddOutput(procedureOutput.ToString())
+            Else
+                AddOutput("The procedure completed without producing output.")
+            End If
+        End Using
 
     End Sub
 
