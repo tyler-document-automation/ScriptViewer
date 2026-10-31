@@ -45,11 +45,13 @@ Partial Class frmImport
         ' 
         rdoNonCloud.Appearance = Appearance.Button
         rdoNonCloud.AutoSize = True
+        rdoNonCloud.Checked = True
         rdoNonCloud.Font = New Font("Segoe UI", 11.25F)
         rdoNonCloud.Location = New Point(6, 3)
         rdoNonCloud.Name = "rdoNonCloud"
         rdoNonCloud.Size = New Size(92, 30)
         rdoNonCloud.TabIndex = 5
+        rdoNonCloud.TabStop = True
         rdoNonCloud.Text = "Non-Cloud"
         rdoNonCloud.UseVisualStyleBackColor = True
         ' 
@@ -68,16 +70,16 @@ Partial Class frmImport
         ' txtFolderPath
         ' 
         txtFolderPath.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        txtFolderPath.Location = New Point(103, 141)
+        txtFolderPath.Location = New Point(113, 105)
         txtFolderPath.Name = "txtFolderPath"
-        txtFolderPath.Size = New Size(365, 27)
+        txtFolderPath.Size = New Size(527, 27)
         txtFolderPath.TabIndex = 7
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(11, 144)
+        Label1.Location = New Point(21, 108)
         Label1.Name = "Label1"
         Label1.Size = New Size(86, 20)
         Label1.TabIndex = 8
@@ -86,7 +88,7 @@ Partial Class frmImport
         ' btnBrowse
         ' 
         btnBrowse.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnBrowse.Location = New Point(485, 141)
+        btnBrowse.Location = New Point(661, 105)
         btnBrowse.Name = "btnBrowse"
         btnBrowse.Size = New Size(75, 27)
         btnBrowse.TabIndex = 9
@@ -96,7 +98,7 @@ Partial Class frmImport
         ' btnImport
         ' 
         btnImport.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnImport.Location = New Point(581, 141)
+        btnImport.Location = New Point(113, 152)
         btnImport.Name = "btnImport"
         btnImport.Size = New Size(75, 27)
         btnImport.TabIndex = 10
@@ -107,7 +109,7 @@ Partial Class frmImport
         ' 
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(11, 108)
+        Label2.Location = New Point(21, 65)
         Label2.Name = "Label2"
         Label2.Size = New Size(50, 20)
         Label2.TabIndex = 12
@@ -116,7 +118,7 @@ Partial Class frmImport
         ' txtClient
         ' 
         txtClient.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        txtClient.Location = New Point(103, 105)
+        txtClient.Location = New Point(113, 62)
         txtClient.Name = "txtClient"
         txtClient.Size = New Size(365, 27)
         txtClient.TabIndex = 11
@@ -124,12 +126,12 @@ Partial Class frmImport
         ' 
         ' txtOutput
         ' 
-        txtOutput.Location = New Point(103, 194)
+        txtOutput.Location = New Point(55, 194)
         txtOutput.Multiline = True
         txtOutput.Name = "txtOutput"
         txtOutput.ReadOnly = True
         txtOutput.ScrollBars = ScrollBars.Both
-        txtOutput.Size = New Size(553, 221)
+        txtOutput.Size = New Size(681, 221)
         txtOutput.TabIndex = 13
         txtOutput.WordWrap = False
         ' 
@@ -161,7 +163,7 @@ Partial Class frmImport
         cmbClients.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cmbClients.FormattingEnabled = True
         cmbClients.ItemHeight = 20
-        cmbClients.Location = New Point(103, 104)
+        cmbClients.Location = New Point(113, 61)
         cmbClients.Name = "cmbClients"
         cmbClients.Size = New Size(365, 28)
         cmbClients.TabIndex = 22
@@ -170,7 +172,7 @@ Partial Class frmImport
         ' 
         Panel1.Controls.Add(rdoNew)
         Panel1.Controls.Add(rdoExisting)
-        Panel1.Location = New Point(485, 104)
+        Panel1.Location = New Point(495, 61)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(149, 27)
         Panel1.TabIndex = 24
@@ -179,7 +181,7 @@ Partial Class frmImport
         ' 
         Panel2.Controls.Add(rdoCloud)
         Panel2.Controls.Add(rdoNonCloud)
-        Panel2.Location = New Point(40, 30)
+        Panel2.Location = New Point(21, 12)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(200, 39)
         Panel2.TabIndex = 25
@@ -189,7 +191,7 @@ Partial Class frmImport
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
-        ClientSize = New Size(800, 450)
+        ClientSize = New Size(803, 443)
         Controls.Add(Panel2)
         Controls.Add(Panel1)
         Controls.Add(cmbClients)

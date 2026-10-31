@@ -108,12 +108,22 @@ Public Class frmImport
     End Sub
 
     Private Sub btnImport_Click(sender As Object, e As EventArgs) Handles btnImport.Click
-        If txtFolderPath.Text = "" Or txtClient.Text = "" Then
-            MessageBox.Show("Please enter a client and folder path")
+        Dim client As String = ""
+
+        If rdoExisting.Checked Then
+            client = cmbClients.Text.Replace("(v2)", "").Trim()
+        Else
+            client = txtClient.Text.Trim()
+
+        End If
+
+        If txtFolderPath.Text = "" Or client = "" Then
+            MessageBox.Show("Please select a client and folder path")
             Return
         End If
 
-        Dim client As String = txtClient.Text.Trim()
+
+
         Dim folderPath As String = txtFolderPath.Text.Trim()
 
         txtOutput.Clear()
@@ -210,7 +220,7 @@ Public Class frmImport
         'Create the timestamped destination folder.
         Directory.CreateDirectory(tempFolder)
 
-        AddOutput("Copying files to " & tempFolder & "...")
+        AddOutput("Copying files to " & tempFolder)
 
         'Copy only the files directly inside the selected folder.
         For Each sourceFile As String In Directory.GetFiles(sourceFolder, "*.json", SearchOption.TopDirectoryOnly)
