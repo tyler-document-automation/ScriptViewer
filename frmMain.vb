@@ -46,18 +46,7 @@ Public Class frmMain
 #End If
 
 
-
         Dim environment As String = ConfigurationManager.AppSettings("Environment")
-        'Dim connectionString As String
-
-        'If environment = "test" Then
-        '    connectionString = ConfigurationManager.ConnectionStrings("ScriptViewerTest").ConnectionString
-        '    '_connScriptViewer = New SqlConnection(connectionString)
-        'ElseIf environment = "prod" Then
-        '    connectionString = ConfigurationManager.ConnectionStrings("ScriptViewerProd").ConnectionString
-        '    '_connScriptViewer = New SqlConnection(connectionString)
-        'End If
-
 
 
     End Sub

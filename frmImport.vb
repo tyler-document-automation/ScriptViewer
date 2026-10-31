@@ -1,11 +1,98 @@
-﻿Imports Microsoft.Data.SqlClient
-Imports System.Data
-Imports System.Text
+﻿Imports System.Data
 Imports System.IO
+Imports System.Text
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Button
+Imports Microsoft.Data.SqlClient
 
 
 Public Class frmImport
     Public Shared connectionString
+
+    Private Sub frmImport_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Try
+            CreateConnection()
+            LoadClientList()
+
+        Catch ex As Exception
+            MessageBox.Show("Database connection failed: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub CreateConnection()
+#If DEBUG Then
+        connectionString = ConfigurationManager.ConnectionStrings("ScriptViewerTest").ConnectionString
+#ElseIf RELEASE Then
+        connectionString = ConfigurationManager.ConnectionStrings("ScriptViewerProd").ConnectionString
+#End If
+
+        Dim environment As String = ConfigurationManager.AppSettings("Environment")
+    End Sub
+
+    Private Sub LoadClientList()
+
+        Dim currentClient As String = cmbClients.Text
+
+        Dim dt As New DataTable()
+
+        Using _connScriptViewer = New SqlConnection(connectionString)
+            Try
+
+                Using cmd As New SqlCommand("GetScripts", _connScriptViewer)
+                    cmd.CommandType = CommandType.StoredProcedure
+
+                    cmd.Parameters.AddWithValue("@querytype", 0)
+
+
+                    Using da As New SqlDataAdapter(cmd)
+                        da.Fill(dt)
+                    End Using
+
+                    Dim newRow As DataRow = dt.NewRow()
+                    newRow("ClientName") = "--Select client--"
+                    dt.Rows.InsertAt(newRow, 0)
+
+
+                    cmbClients.DataSource = dt
+                    cmbClients.DisplayMember = "ClientName"
+
+                    Dim foundIndex As Integer = cmbClients.FindStringExact(currentClient)
+
+                    If foundIndex >= 0 Then
+                        cmbClients.SelectedIndex = foundIndex
+                    Else
+                        cmbClients.SelectedIndex = 0
+                    End If
+
+                    'cmbClients.SelectedIndex = 0
+
+                End Using
+
+
+            Catch ex As Exception
+                MessageBox.Show("Error loading client list. " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Using
+
+    End Sub
+
+    Private Sub RadioButton_CheckedChanged(sender As Object, e As EventArgs) _
+    Handles rdoExisting.CheckedChanged, rdoNew.CheckedChanged
+
+        Dim selectedButton As System.Windows.Forms.RadioButton =
+            DirectCast(sender, System.Windows.Forms.RadioButton)
+
+        If Not selectedButton.Checked Then Return
+
+        If selectedButton Is rdoExisting Then
+            cmbClients.Visible = True
+            txtClient.Visible = False
+
+        ElseIf selectedButton Is rdoNew Then
+            cmbClients.Visible = False
+            txtClient.Visible = True
+
+        End If
+    End Sub
 
     Private Sub btnBrowse_Click(sender As Object, e As EventArgs) Handles btnBrowse.Click
         Using folderDialog As New FolderBrowserDialog()
