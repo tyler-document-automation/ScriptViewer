@@ -182,6 +182,15 @@ Public Class frmImport
                 Return False
             End If
 
+            Dim hasReadme As Boolean = Array.Exists(
+                Directory.GetFiles(folderPath, "*", SearchOption.TopDirectoryOnly),
+                Function(filePath) String.Equals(Path.GetFileName(filePath), "readme.md", StringComparison.OrdinalIgnoreCase))
+
+            If Not hasReadme Then
+                AddOutput("File check failed: readme.md was not found.")
+                Return False
+            End If
+
             AddOutput("Non-cloud file check passed.")
 
 
@@ -240,6 +249,7 @@ Public Class frmImport
             ImportDataCloud(client, folderpath)
         Else
             'rdoNonCloud is checked, do something else
+
         End If
 
     End Sub
