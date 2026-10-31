@@ -62,6 +62,8 @@ Partial Class frmMain
         cmbVersions = New System.Windows.Forms.ComboBox()
         btnCloudSites = New System.Windows.Forms.Button()
         cmbClients = New System.Windows.Forms.ComboBox()
+        FileToolStripMenuItem = New ToolStripMenuItem()
+        mnuImport = New ToolStripMenuItem()
         CType(dgvEventLibraries, ComponentModel.ISupportInitialize).BeginInit()
         CType(dgvEventLibraryEvents, ComponentModel.ISupportInitialize).BeginInit()
         MenuStrip1.SuspendLayout()
@@ -159,7 +161,7 @@ Partial Class frmMain
         ' 
         ' MenuStrip1
         ' 
-        MenuStrip1.Items.AddRange(New ToolStripItem() {ReportsToolStripMenuItem, tsMenu})
+        MenuStrip1.Items.AddRange(New ToolStripItem() {FileToolStripMenuItem, ReportsToolStripMenuItem, tsMenu})
         MenuStrip1.Location = New Point(0, 0)
         MenuStrip1.Name = "MenuStrip1"
         MenuStrip1.Size = New Size(1479, 24)
@@ -341,6 +343,19 @@ Partial Class frmMain
         cmbClients.Size = New Size(298, 28)
         cmbClients.TabIndex = 21
         ' 
+        ' FileToolStripMenuItem
+        ' 
+        FileToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {mnuImport})
+        FileToolStripMenuItem.Name = "FileToolStripMenuItem"
+        FileToolStripMenuItem.Size = New Size(37, 20)
+        FileToolStripMenuItem.Text = "File"
+        ' 
+        ' mnuImport
+        ' 
+        mnuImport.Name = "mnuImport"
+        mnuImport.Size = New Size(180, 22)
+        mnuImport.Text = "Import"
+        ' 
         ' frmMain
         ' 
         AcceptButton = btnSearch
@@ -396,6 +411,8 @@ Partial Class frmMain
     Friend WithEvents cmbVersions As System.Windows.Forms.ComboBox
     Friend WithEvents btnCompare As System.Windows.Forms.Button
     Friend WithEvents btnComments As System.Windows.Forms.Button
+    Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents mnuImport As ToolStripMenuItem
 
 
 End Class
