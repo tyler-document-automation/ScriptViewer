@@ -7,6 +7,9 @@
     <Compile Update="CompareTextBox.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="frmAdminLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmCloudSites.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -14,6 +17,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmCompare.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmImport.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmMain.vb">
