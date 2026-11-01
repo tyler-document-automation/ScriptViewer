@@ -5,6 +5,7 @@ Imports System.Data.SqlTypes
 Imports System.Net.Http
 Imports System.Net.Http.Headers
 Imports System.Reflection
+Imports System.Security.Principal
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
 Imports FastColoredTextBoxNS
@@ -694,22 +695,27 @@ Public Class frmMain
     End Sub
 
     Private Sub mnuImport_Click(sender As Object, e As EventArgs) Handles mnuImport.Click
-        Using loginForm As New frmAdminLogin()
+        If Not IsImportUser() Then
+            MessageBox.Show(Me, "Access denied.", "Import", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
 
-            If loginForm.ShowDialog(Me) <> DialogResult.OK Then
-                Return
-            End If
-
-        End Using
-
-        Using frmImport As New frmImport()
-
-            frmImport.ShowDialog(Me)
-
+        Using importForm As New frmImport()
+            importForm.ShowDialog(Me)
         End Using
 
         LoadClientList()
     End Sub
+
+    Private Shared Function IsImportUser() As Boolean
+        Try
+            Using identity As WindowsIdentity = WindowsIdentity.GetCurrent()
+                Return String.Equals(identity.Name, "TYLER\brian.varnell", StringComparison.OrdinalIgnoreCase)
+            End Using
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
 End Class
 
 

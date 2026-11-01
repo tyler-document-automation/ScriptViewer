@@ -46,6 +46,10 @@ Partial Class frmMain
         SqlCommand1 = New Microsoft.Data.SqlClient.SqlCommand()
         lblEventFunction = New Label()
         MenuStrip1 = New MenuStrip()
+        FileToolStripMenuItem = New ToolStripMenuItem()
+        mnuImport = New ToolStripMenuItem()
+        RenameClientToolStripMenuItem = New ToolStripMenuItem()
+        DeleteClientVersionToolStripMenuItem = New ToolStripMenuItem()
         ReportsToolStripMenuItem = New ToolStripMenuItem()
         tsVersionByClient = New ToolStripMenuItem()
         tsMenu = New ToolStripMenuItem()
@@ -62,8 +66,6 @@ Partial Class frmMain
         cmbVersions = New System.Windows.Forms.ComboBox()
         btnCloudSites = New System.Windows.Forms.Button()
         cmbClients = New System.Windows.Forms.ComboBox()
-        FileToolStripMenuItem = New ToolStripMenuItem()
-        mnuImport = New ToolStripMenuItem()
         CType(dgvEventLibraries, ComponentModel.ISupportInitialize).BeginInit()
         CType(dgvEventLibraryEvents, ComponentModel.ISupportInitialize).BeginInit()
         MenuStrip1.SuspendLayout()
@@ -168,6 +170,31 @@ Partial Class frmMain
         MenuStrip1.TabIndex = 13
         MenuStrip1.Text = "MenuStrip1"
         ' 
+        ' FileToolStripMenuItem
+        ' 
+        FileToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {mnuImport, RenameClientToolStripMenuItem, DeleteClientVersionToolStripMenuItem})
+        FileToolStripMenuItem.Name = "FileToolStripMenuItem"
+        FileToolStripMenuItem.Size = New Size(47, 20)
+        FileToolStripMenuItem.Text = "Tools"
+        ' 
+        ' mnuImport
+        ' 
+        mnuImport.Name = "mnuImport"
+        mnuImport.Size = New Size(182, 22)
+        mnuImport.Text = "Import"
+        ' 
+        ' RenameClientToolStripMenuItem
+        ' 
+        RenameClientToolStripMenuItem.Name = "RenameClientToolStripMenuItem"
+        RenameClientToolStripMenuItem.Size = New Size(182, 22)
+        RenameClientToolStripMenuItem.Text = "Rename Client"
+        ' 
+        ' DeleteClientVersionToolStripMenuItem
+        ' 
+        DeleteClientVersionToolStripMenuItem.Name = "DeleteClientVersionToolStripMenuItem"
+        DeleteClientVersionToolStripMenuItem.Size = New Size(182, 22)
+        DeleteClientVersionToolStripMenuItem.Text = "Delete Client Version"
+        ' 
         ' ReportsToolStripMenuItem
         ' 
         ReportsToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {tsVersionByClient})
@@ -207,7 +234,7 @@ Partial Class frmMain
         ' txtSearch
         ' 
         txtSearch.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        txtSearch.Location = New Point(796, 9)
+        txtSearch.Location = New Point(796, 11)
         txtSearch.Name = "txtSearch"
         txtSearch.Size = New Size(241, 27)
         txtSearch.TabIndex = 16
@@ -216,9 +243,9 @@ Partial Class frmMain
         ' 
         btnSearch.FlatStyle = FlatStyle.System
         btnSearch.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnSearch.Location = New Point(806, 39)
+        btnSearch.Location = New Point(843, 43)
         btnSearch.Name = "btnSearch"
-        btnSearch.Size = New Size(53, 27)
+        btnSearch.Size = New Size(53, 35)
         btnSearch.TabIndex = 17
         btnSearch.Text = "Go"
         btnSearch.UseVisualStyleBackColor = True
@@ -227,9 +254,9 @@ Partial Class frmMain
         ' 
         btnUndo.FlatStyle = FlatStyle.System
         btnUndo.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnUndo.Location = New Point(865, 39)
+        btnUndo.Location = New Point(902, 43)
         btnUndo.Name = "btnUndo"
-        btnUndo.Size = New Size(53, 27)
+        btnUndo.Size = New Size(53, 35)
         btnUndo.TabIndex = 18
         btnUndo.Text = "Undo"
         btnUndo.UseVisualStyleBackColor = True
@@ -343,19 +370,6 @@ Partial Class frmMain
         cmbClients.Size = New Size(298, 28)
         cmbClients.TabIndex = 21
         ' 
-        ' FileToolStripMenuItem
-        ' 
-        FileToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {mnuImport})
-        FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        FileToolStripMenuItem.Size = New Size(37, 20)
-        FileToolStripMenuItem.Text = "File"
-        ' 
-        ' mnuImport
-        ' 
-        mnuImport.Name = "mnuImport"
-        mnuImport.Size = New Size(180, 22)
-        mnuImport.Text = "Import"
-        ' 
         ' frmMain
         ' 
         AcceptButton = btnSearch
@@ -413,6 +427,8 @@ Partial Class frmMain
     Friend WithEvents btnComments As System.Windows.Forms.Button
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents mnuImport As ToolStripMenuItem
+    Friend WithEvents RenameClientToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DeleteClientVersionToolStripMenuItem As ToolStripMenuItem
 
 
 End Class

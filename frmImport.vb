@@ -292,7 +292,7 @@ Public Class frmImport
                     procedureOutput.AppendLine(infoArgs.Message)
                 End Sub
 
-            Using command As New SqlCommand("ImportDataOld", connection)
+            Using command As New SqlCommand("ImportDataNonCloud", connection)
                 command.CommandType = CommandType.StoredProcedure
                 command.Parameters.Add("@ClientName", SqlDbType.NVarChar, 255).Value = client
                 command.Parameters.Add("@ReleaseJson", SqlDbType.NVarChar, -1).Value = releaseJson
@@ -332,7 +332,7 @@ Public Class frmImport
 
             Dim jsonContent As String = File.ReadAllText(jsonFiles(0))
 
-            Using command As New SqlCommand("ImportDataNew", connection)
+            Using command As New SqlCommand("ImportDataCloud", connection)
                 command.CommandType = CommandType.StoredProcedure
                 command.Parameters.Add("@ClientName", SqlDbType.NVarChar, 255).Value = client
                 command.Parameters.Add("@JsonData", SqlDbType.NVarChar, -1).Value = jsonContent
